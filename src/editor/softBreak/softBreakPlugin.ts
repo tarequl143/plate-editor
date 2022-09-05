@@ -1,7 +1,8 @@
+import { PlatePlugin, SoftBreakPlugin } from "@udecode/plate";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 
-export const softBreakPlugin: any = {
+export const softBreakPlugin: Partial<PlatePlugin<SoftBreakPlugin>> = {
   options: {
     rules: [
       { hotkey: "shift+enter" },

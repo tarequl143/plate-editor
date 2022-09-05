@@ -1,11 +1,10 @@
 import {
   collapseSelection,
   insertNodes,
-  isCollapsed,
   unwrapNodes,
   wrapNodes,
 } from "@udecode/plate";
-import { Editor } from "slate";
+import { Editor, Range } from "slate";
 import { CUSTOM_ELEMENT_LINK } from "./types";
 
 export const isLinkActive = (editor: any) => {
@@ -29,7 +28,7 @@ export const wrapLink = (editor: any, url: any) => {
   }
 
   const { selection } = editor;
-  const isCollapsedSelection = selection && isCollapsed(selection);
+  const isCollapsedSelection = selection && Range.isCollapsed(selection);
   const link = {
     type: CUSTOM_ELEMENT_LINK,
     url,

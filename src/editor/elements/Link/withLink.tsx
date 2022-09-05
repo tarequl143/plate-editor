@@ -5,8 +5,6 @@ import { wrapLink } from "./utils";
 export const withLink = (editor: any) => {
   const { insertData, insertText } = editor;
 
-  // editor.isInline = (element: any) => element.type === CUSTOM_ELEMENT_LINK;
-
   editor.insertText = (text: any) => {
     if (text && isUrl(text)) {
       wrapLink(editor, text);

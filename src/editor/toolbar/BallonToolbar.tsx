@@ -1,6 +1,5 @@
 import {
   BlockToolbarButton,
-  Button,
   getPluginType,
   MarkToolbarButton,
   MARK_BOLD,
@@ -14,33 +13,39 @@ import {
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
-import { TextBolder } from "phosphor-react";
-import { useEffect } from "react";
+import { LinkSimple, Quotes, TextBolder, WarningCircle } from "phosphor-react";
+import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import { isLinkActive, unwrapLink, wrapLink } from "../elements/Link/utils";
+import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BaloonToolbar, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
 import { toggleBallonToolbar } from "./utils";
 
 const BallonToolbar = (props: BaloonToolbarProps) => {
   // Props Destructuring
-  const { isLink, toolbarRef } = props;
+  const { isLink } = props;
+
+  // Baloon Toolobar Ref
+  const ballonToolberRef: any = useRef();
 
   // Get Editor Ref
   const editor = usePlateEditorRef()!;
+
+  // Get Editor Selection
   const selection = usePlateSelection()!;
 
   // Baloon Toolbar Toggle
   useEffect(() => {
-    toggleBallonToolbar(editor, toolbarRef);
-  });
+    toggleBallonToolbar(editor, ballonToolberRef);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selection]);
 
   // Console
   // console.log("Editor Baloon", editor);
 
   return (
-    <BaloonToolbar ref={toolbarRef}>
+    <BaloonToolbar ref={ballonToolberRef}>
       <BaloonToolbarContent>
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
@@ -78,13 +83,14 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         />
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
-          icon={"Quote"}
+          icon={<Quotes size={32} weight="fill" />}
         />
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
-          icon={"Hint"}
+          icon={<WarningCircle size={32} weight="fill" />}
         />
-        <Button
+        <LinkToolbarButton icon={<LinkSimple size={32} weight="bold" />} />
+        {/* <Button
           onMouseDown={(event: any) => {
             if (event.button === 0) {
               if (isLinkActive(editor)) {
@@ -98,7 +104,7 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           }}
         >
           Link
-        </Button>
+        </Button> */}
       </BaloonToolbarContent>
     </BaloonToolbar>
   );

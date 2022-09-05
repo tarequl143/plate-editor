@@ -1,9 +1,14 @@
 import {
   createBoldPlugin,
   createCodePlugin,
+  createComboboxPlugin,
+  createExitBreakPlugin,
   createHighlightPlugin,
   createItalicPlugin,
+  createLinkPlugin,
+  createMentionPlugin,
   createPlugins,
+  createResetNodePlugin,
   createSoftBreakPlugin,
   createStrikethroughPlugin,
   createSubscriptPlugin,
@@ -13,7 +18,10 @@ import {
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
-import { createLinkPlugin } from "../elements/Link/createLinkPlugin";
+import { linkPlugin } from "../elements/Link/linkPlugin";
+import { mentionPlugin } from "../elements/Mention/mentionPlugin";
+import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
+import { resetNodePlugin } from "../resetNode/resetNodePlugin";
 import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 
 export const usePlugins = () => {
@@ -29,8 +37,12 @@ export const usePlugins = () => {
       createSuperscriptPlugin(),
       createBlockquotePlugin(),
       createHintPlugin(),
-      createLinkPlugin(),
+      createLinkPlugin(linkPlugin),
+      createResetNodePlugin(resetNodePlugin),
+      createExitBreakPlugin(exitBreakPlugin),
       createSoftBreakPlugin(softBreakPlugin),
+      createComboboxPlugin(),
+      createMentionPlugin(mentionPlugin),
     ]);
     return allPlugins;
   }, []);

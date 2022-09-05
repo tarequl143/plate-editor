@@ -8,6 +8,8 @@ export const LeafRenderer = ({
   children,
   ...otherProps
 }: PlateRenderLeafProps) => {
+  console.log("Leaf", leaf);
+
   if (leaf.hasOwnProperty("bold") && (leaf as any).bold) {
     children = <strong {...attributes}>{children}</strong>;
   }
