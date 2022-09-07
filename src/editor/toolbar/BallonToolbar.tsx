@@ -19,6 +19,7 @@ import {
   LinkSimple,
   Quotes,
   TextBolder,
+  TextHOne,
   TextItalic,
   TextStrikethrough,
   TextUnderline,
@@ -26,9 +27,10 @@ import {
 } from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
+import { CUSTOM_ELEMENT_H1 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
-import { BaloonToolbar, BaloonToolbarContent } from "./ToolbarStyles";
+import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
 import { toggleBallonToolbar } from "./utils";
 
@@ -55,7 +57,7 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
   // console.log("Editor Baloon", editor);
 
   return (
-    <BaloonToolbar ref={ballonToolberRef}>
+    <BalloonToolbarWrap ref={ballonToolberRef}>
       <BaloonToolbarContent>
         <MarkToolbarButton
           type={getPluginType(editor, MARK_BOLD)}
@@ -92,6 +94,10 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           clear={getPluginType(editor, MARK_SUPERSCRIPT)}
         />
         <BlockToolbarButton
+          type={getPluginType(editor, CUSTOM_ELEMENT_H1)}
+          icon={<TextHOne size={32} />}
+        />
+        <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
           icon={<Quotes size={32} weight="fill" />}
         />
@@ -104,7 +110,7 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           setIsLink={setIsLink}
         />
       </BaloonToolbarContent>
-    </BaloonToolbar>
+    </BalloonToolbarWrap>
   );
 };
 

@@ -17,6 +17,7 @@ import {
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
+import { createH1Plugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
@@ -37,6 +38,7 @@ export const usePlugins = () => {
       createSuperscriptPlugin(),
       createBlockquotePlugin(),
       createHintPlugin(),
+      createH1Plugin(),
       createLinkPlugin(linkPlugin),
       createResetNodePlugin(resetNodePlugin),
       createExitBreakPlugin(exitBreakPlugin),

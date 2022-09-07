@@ -94,3 +94,48 @@ export const toggleBallonToolbar = (
   elem.style.left = `${toolbarLeft}px`;
   elem.style.top = `${toolbarTop}px`;
 };
+
+export const toggleSlashToolbar = (
+  editor?: PlateEditor<Value>,
+  toolbarRef?: RefObject<HTMLDivElement>,
+) => {
+  if (!editor) {
+    return;
+  }
+  const elem = toolbarRef?.current;
+  const { selection } = editor;
+
+  if (!elem) {
+    return;
+  }
+
+  const EditorId = document.getElementById("main-editor")!;
+  const EditorBoundingClient: any = EditorId.getBoundingClientRect();
+
+  if (
+    !selection ||
+    !ReactEditor.isFocused(editor as ReactEditor) ||
+    Range.isCollapsed(selection) ||
+    Editor.string(editor as BaseEditor, selection) === ""
+  ) {
+    elem.removeAttribute("style");
+    return;
+  }
+
+  const domSelection: any = window?.getSelection();
+  const { rangeCount } = domSelection;
+  if (!rangeCount) return;
+  const rect =
+    !!rangeCount && domSelection?.getRangeAt?.(0)?.getBoundingClientRect();
+  const toolbarLeft = calculateToolbarLeft(rect, elem, EditorBoundingClient);
+  const toolbarTop = calculateToolbarTop(rect, elem, EditorBoundingClient);
+
+  //   setIsOpenLinkForm(false);
+  //   setShowCommentInput(false);
+  //   setLink("");
+
+  // Set Toolbar Style
+  elem.style.opacity = "1";
+  elem.style.left = `${toolbarLeft}px`;
+  elem.style.top = `${toolbarTop}px`;
+};

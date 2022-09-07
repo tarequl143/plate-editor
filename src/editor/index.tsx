@@ -32,6 +32,9 @@ const EditorIndex: React.FC = () => {
 
   // On Editor Change
   const onChange = (value: Value) => {
+    if (isLink) {
+      setIsLink(false);
+    }
     console.log("Value ====>", value);
 
     if (!editor) return;
