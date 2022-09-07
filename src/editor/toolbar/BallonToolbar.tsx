@@ -13,7 +13,17 @@ import {
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
-import { LinkSimple, Quotes, TextBolder, WarningCircle } from "phosphor-react";
+import {
+  Code,
+  HighlighterCircle,
+  LinkSimple,
+  Quotes,
+  TextBolder,
+  TextItalic,
+  TextStrikethrough,
+  TextUnderline,
+  WarningCircle,
+} from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
@@ -24,7 +34,7 @@ import { toggleBallonToolbar } from "./utils";
 
 const BallonToolbar = (props: BaloonToolbarProps) => {
   // Props Destructuring
-  const { isLink } = props;
+  const { setIsLink } = props;
 
   // Baloon Toolobar Ref
   const ballonToolberRef: any = useRef();
@@ -53,23 +63,23 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_ITALIC)}
-          icon={<TextBolder size={24} weight="regular" />}
+          icon={<TextItalic size={24} weight="regular" />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_UNDERLINE)}
-          icon={<TextBolder size={24} weight="regular" />}
+          icon={<TextUnderline size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_STRIKETHROUGH)}
-          icon={<TextBolder size={24} weight="regular" />}
+          icon={<TextStrikethrough size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_HIGHLIGHT)}
-          icon={<TextBolder size={24} weight="regular" />}
+          icon={<HighlighterCircle size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_CODE)}
-          icon={<TextBolder size={24} weight="regular" />}
+          icon={<Code size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_SUPERSCRIPT)}
@@ -89,22 +99,10 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
           icon={<WarningCircle size={32} weight="fill" />}
         />
-        <LinkToolbarButton icon={<LinkSimple size={32} weight="bold" />} />
-        {/* <Button
-          onMouseDown={(event: any) => {
-            if (event.button === 0) {
-              if (isLinkActive(editor)) {
-                unwrapLink(editor);
-                // linkSet("");
-              } else {
-                if (!editor) return;
-                wrapLink(editor, "https://google.com");
-              }
-            }
-          }}
-        >
-          Link
-        </Button> */}
+        <LinkToolbarButton
+          icon={<LinkSimple size={32} weight="bold" />}
+          setIsLink={setIsLink}
+        />
       </BaloonToolbarContent>
     </BaloonToolbar>
   );

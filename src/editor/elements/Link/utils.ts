@@ -5,7 +5,7 @@ import {
   wrapNodes,
 } from "@udecode/plate";
 import { Editor, Range } from "slate";
-import { CUSTOM_ELEMENT_LINK } from "./types";
+const CUSTOM_ELEMENT_LINK = "custom_elem_link";
 
 export const isLinkActive = (editor: any) => {
   const [link]: any = Editor.nodes(editor, {

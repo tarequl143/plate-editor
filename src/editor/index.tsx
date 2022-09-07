@@ -3,22 +3,23 @@ import {
   getSelectionText,
   MentionCombobox,
   Plate,
-  RenderLeafFn,
-  TEditableProps,
   Value,
 } from "@udecode/plate";
 import { useCallback, useMemo, useState } from "react";
 import { Path, Text } from "slate";
+import { editableProps } from "./editableProps";
 import { MENTIONABLES } from "./elements/Mention/Mentionable";
 import { MentionItem } from "./elements/Mention/MentionElement";
 import { CUSTOM_ELEMENT_MENTION_ITEM } from "./elements/Mention/types";
 import { usePlugins } from "./hooks/usePlugins";
-import { LeafRenderer } from "./renderer/LeafRenderer";
 import { EditorMain, EditorWrapper } from "./styles";
 import BallonToolbar from "./toolbar/BallonToolbar";
 
 const EditorIndex: React.FC = () => {
   const [lastSelection, setLastSelection] = useState<string>("");
+  const [isLink, setIsLink] = useState(false);
+
+  console.log(isLink);
 
   // Use Plugins
   const plugins = usePlugins();
@@ -29,12 +30,11 @@ const EditorIndex: React.FC = () => {
     [plugins],
   );
 
+  // On Editor Change
   const onChange = (value: Value) => {
     console.log("Value ====>", value);
 
     if (!editor) return;
-
-    const { selection } = editor;
 
     // set last selection if not null
     if (editor.selection !== null) {
@@ -42,11 +42,12 @@ const EditorIndex: React.FC = () => {
     }
   };
 
+  // Decorate selected text when link button clicked
   const decorate = useCallback(
     ([node, path]: [node: Node, path: Path]) => {
       const ranges: any = [];
 
-      if (Text.isText(node) && lastSelection) {
+      if (Text.isText(node) && lastSelection && isLink) {
         const { text } = node;
         const parts = text.split(lastSelection);
         let offset = 0;
@@ -66,17 +67,8 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [lastSelection],
+    [editor.selection, lastSelection],
   );
-
-  const editableProps: TEditableProps = {
-    spellCheck: false,
-    autoFocus: false,
-    readOnly: false,
-    decorate: decorate as any,
-    placeholder: "Click here to start writing..",
-    renderLeaf: LeafRenderer as RenderLeafFn<Value>,
-  };
 
   // Console
   // console.log("Main Editor ==========>");
@@ -87,7 +79,7 @@ const EditorIndex: React.FC = () => {
         <Plate
           editor={editor}
           enabled
-          editableProps={editableProps}
+          editableProps={{ ...editableProps, decorate: decorate as any }}
           plugins={plugins}
           initialValue={[
             {
@@ -101,7 +93,7 @@ const EditorIndex: React.FC = () => {
           ]}
           onChange={onChange}
         >
-          <BallonToolbar />
+          <BallonToolbar setIsLink={setIsLink} />
           <MentionCombobox
             items={MENTIONABLES}
             pluginKey={CUSTOM_ELEMENT_MENTION_ITEM}

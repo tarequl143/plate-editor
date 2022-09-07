@@ -1,6 +1,6 @@
 import { PlateEditor, Value } from "@udecode/plate";
 import { RefObject } from "react";
-import { BaseEditor, Editor } from "slate";
+import { BaseEditor, Editor, Range } from "slate";
 import { ReactEditor } from "slate-react";
 
 export const calculateToolbarLeft = (
@@ -70,15 +70,18 @@ export const toggleBallonToolbar = (
   if (
     !selection ||
     !ReactEditor.isFocused(editor as ReactEditor) ||
-    // Range.isCollapsed(selection) ||
+    Range.isCollapsed(selection) ||
     Editor.string(editor as BaseEditor, selection) === ""
   ) {
     elem.removeAttribute("style");
     return;
   }
 
-  const domSelection: any = window.getSelection();
-  const rect = domSelection.getRangeAt(0).getBoundingClientRect();
+  const domSelection: any = window?.getSelection();
+  const { rangeCount } = domSelection;
+  if (!rangeCount) return;
+  const rect =
+    !!rangeCount && domSelection?.getRangeAt?.(0)?.getBoundingClientRect();
   const toolbarLeft = calculateToolbarLeft(rect, elem, EditorBoundingClient);
   const toolbarTop = calculateToolbarTop(rect, elem, EditorBoundingClient);
 

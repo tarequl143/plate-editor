@@ -1,3 +1,4 @@
+import { ELEMENT_LINK, focusEditor } from "@udecode/plate";
 import {
   getPluginType,
   someNode,
@@ -7,8 +8,7 @@ import {
 } from "@udecode/plate-core";
 import { triggerFloatingLink } from "@udecode/plate-link";
 import { ToolbarButton, ToolbarButtonProps } from "@udecode/plate-ui-toolbar";
-import { useRef } from "react";
-import { CUSTOM_ELEMENT_LINK } from "../../elements/Link/types";
+const CUSTOM_ELEMENT_LINK = "custom_elem_link";
 
 export interface LinkToolbarButtonProps extends ToolbarButtonProps {
   /**
@@ -18,13 +18,11 @@ export interface LinkToolbarButtonProps extends ToolbarButtonProps {
 }
 
 export const LinkToolbarButton = withPlateEventProvider(
-  ({ id, getLinkUrl, ...props }: LinkToolbarButtonProps) => {
+  ({ id, getLinkUrl, setIsLink, ...props }: LinkToolbarButtonProps) => {
     id = useEventPlateId(id);
     const editor = usePlateEditorState(id)!;
 
-    const editorSelection = useRef(editor?.selection);
-
-    const type = getPluginType(editor, CUSTOM_ELEMENT_LINK);
+    const type = getPluginType(editor, ELEMENT_LINK);
     const isLink = !!editor?.selection && someNode(editor, { match: { type } });
 
     return (
@@ -33,14 +31,12 @@ export const LinkToolbarButton = withPlateEventProvider(
           active={isLink}
           onMouseDown={async (event) => {
             if (!editor) return;
+            setIsLink(true);
 
             event.preventDefault();
             event.stopPropagation();
 
-            // console.log("Selection", editor.selection);
-            // console.log("Last Selection", editor.prevSelection);
-
-            // focusEditor(editor, editor.selection ?? editor.prevSelection!);
+            focusEditor(editor, editor.selection ?? editor.prevSelection!);
 
             setTimeout(() => {
               triggerFloatingLink(editor, { focused: true });
