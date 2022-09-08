@@ -6,7 +6,7 @@ import { ReactEditor } from "slate-react";
 export const calculateToolbarLeft = (
   domSelectionBoundingClient: DOMRect,
   elem: HTMLDivElement,
-  editorBoundingClient: DOMRect,
+  editorBoundingClient: DOMRect
 ) => {
   let left = 0;
   const toolbarHalfWidth = elem.offsetWidth / 2;
@@ -29,7 +29,7 @@ export const calculateToolbarLeft = (
 export const calculateToolbarTop = (
   domSelectionBoundingClient: DOMRect,
   elem: HTMLDivElement,
-  editorBoundingClient: DOMRect,
+  editorBoundingClient: DOMRect
 ) => {
   let top = 0;
   const toolbarHeight = elem.offsetHeight;
@@ -52,21 +52,23 @@ export const calculateToolbarTop = (
 
 export const toggleBallonToolbar = (
   editor?: PlateEditor<Value>,
-  toolbarRef?: RefObject<HTMLDivElement>,
+  toolbarRef?: RefObject<HTMLDivElement>
 ) => {
   if (!editor) {
     return;
   }
-  const elem = toolbarRef?.current;
-  const { selection } = editor;
 
+  // toolbar element
+  const elem = toolbarRef?.current;
   if (!elem) {
     return;
   }
 
+  const { selection } = editor; //get selection
   const EditorId = document.getElementById("main-editor")!;
   const EditorBoundingClient: any = EditorId.getBoundingClientRect();
 
+  //* hide toolbar logic
   if (
     !selection ||
     !ReactEditor.isFocused(editor as ReactEditor) ||
@@ -77,9 +79,11 @@ export const toggleBallonToolbar = (
     return;
   }
 
+  //! return of dom selection range is false/empty
   const domSelection: any = window?.getSelection();
   const { rangeCount } = domSelection;
   if (!rangeCount) return;
+
   const rect =
     !!rangeCount && domSelection?.getRangeAt?.(0)?.getBoundingClientRect();
   const toolbarLeft = calculateToolbarLeft(rect, elem, EditorBoundingClient);
@@ -97,7 +101,7 @@ export const toggleBallonToolbar = (
 
 export const toggleSlashToolbar = (
   editor?: PlateEditor<Value>,
-  toolbarRef?: RefObject<HTMLDivElement>,
+  toolbarRef?: RefObject<HTMLDivElement>
 ) => {
   if (!editor) {
     return;

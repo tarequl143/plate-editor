@@ -18,7 +18,7 @@ import {
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
-import { createH1Plugin } from "../elements/Headings/createHeadingPlugin";
+import { HeadingPlugins } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
@@ -31,6 +31,7 @@ import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 export const usePlugins = () => {
   const plugins = useMemo(() => {
     const allPlugins = createPlugins([
+      ...HeadingPlugins,
       createBoldPlugin(),
       createCodePlugin(),
       createItalicPlugin(),
@@ -41,12 +42,8 @@ export const usePlugins = () => {
       createSuperscriptPlugin(),
       createBlockquotePlugin(),
       createHintPlugin(),
-      createH1Plugin(),
       createTodoListPlugin({
         component: TodoListElement,
-        options: {
-          
-        }
       }),
       createLinkPlugin(linkPlugin),
       createResetNodePlugin(resetNodePlugin),
