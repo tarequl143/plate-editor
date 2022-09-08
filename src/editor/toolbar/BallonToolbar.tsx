@@ -19,7 +19,10 @@ import {
   LinkSimple,
   Quotes,
   TextBolder,
+  TextHFour,
   TextHOne,
+  TextHThree,
+  TextHTwo,
   TextItalic,
   TextStrikethrough,
   TextUnderline,
@@ -27,7 +30,12 @@ import {
 } from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
-import { CUSTOM_ELEMENT_H1 } from "../elements/Headings/types";
+import {
+  CUSTOM_ELEMENT_H1,
+  CUSTOM_ELEMENT_H2,
+  CUSTOM_ELEMENT_H3,
+  CUSTOM_ELEMENT_H4,
+} from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
@@ -39,7 +47,7 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
   const { setIsLink } = props;
 
   // Baloon Toolobar Ref
-  const ballonToolberRef: any = useRef();
+  const ballonToolberRef = useRef() as React.RefObject<HTMLDivElement>;
 
   // Get Editor Ref
   const editor = usePlateEditorRef()!;
@@ -49,9 +57,10 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
 
   // Baloon Toolbar Toggle
   useEffect(() => {
-    toggleBallonToolbar(editor, ballonToolberRef);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selection]);
+    if (!!editor) {
+      toggleBallonToolbar(editor, ballonToolberRef);
+    }
+  }, [selection, editor]);
 
   // Console
   // console.log("Editor Baloon", editor);
@@ -93,10 +102,24 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           icon={<TextBolder size={24} weight="regular" />}
           clear={getPluginType(editor, MARK_SUPERSCRIPT)}
         />
+        {/* heading buttons */}
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_H1)}
           icon={<TextHOne size={32} />}
         />
+        <BlockToolbarButton
+          type={getPluginType(editor, CUSTOM_ELEMENT_H2)}
+          icon={<TextHTwo size={32} />}
+        />
+        <BlockToolbarButton
+          type={getPluginType(editor, CUSTOM_ELEMENT_H3)}
+          icon={<TextHThree size={32} />}
+        />
+        <BlockToolbarButton
+          type={getPluginType(editor, CUSTOM_ELEMENT_H4)}
+          icon={<TextHFour size={32} />}
+        />
+        {/* heading buttons ends*/}
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
           icon={<Quotes size={32} weight="fill" />}

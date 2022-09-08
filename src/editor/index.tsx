@@ -18,16 +18,15 @@ import BallonToolbar from "./toolbar/BallonToolbar";
 const EditorIndex: React.FC = () => {
   const [lastSelection, setLastSelection] = useState<string>("");
   const [isLink, setIsLink] = useState(false);
-
   console.log(isLink);
 
-  // Use Plugins
+  // hook returns all Plugins
   const plugins = usePlugins();
 
-  // Editor
+  // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins],
+    [plugins]
   );
 
   // On Editor Change
@@ -70,7 +69,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection],
+    [editor.selection, lastSelection]
   );
 
   // Console
