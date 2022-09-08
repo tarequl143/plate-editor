@@ -1,5 +1,6 @@
 import {
   BlockToolbarButton,
+  ELEMENT_TODO_LI,
   getPluginType,
   MarkToolbarButton,
   MARK_BOLD,
@@ -14,6 +15,7 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import {
+  CheckSquare,
   Code,
   HighlighterCircle,
   LinkSimple,
@@ -95,18 +97,22 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         />
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_H1)}
-          icon={<TextHOne size={32} />}
+          icon={<TextHOne size={24} />}
         />
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
-          icon={<Quotes size={32} weight="fill" />}
+          icon={<Quotes size={24} weight="fill" />}
         />
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
-          icon={<WarningCircle size={32} weight="fill" />}
+          icon={<WarningCircle size={24} weight="fill" />}
+        />
+        <BlockToolbarButton
+          type={getPluginType(editor, ELEMENT_TODO_LI)}
+          icon={<CheckSquare size={24} />}
         />
         <LinkToolbarButton
-          icon={<LinkSimple size={32} weight="bold" />}
+          icon={<LinkSimple size={24} weight="bold" />}
           setIsLink={setIsLink}
         />
       </BaloonToolbarContent>

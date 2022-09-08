@@ -1,4 +1,5 @@
-import { ExitBreakPlugin, KEYS_HEADING, PlatePlugin } from "@udecode/plate";
+import { ExitBreakPlugin, PlatePlugin } from "@udecode/plate";
+import { CUSTOM_ELEMENT_H1 } from "../elements/Headings/types";
 
 export const exitBreakPlugin: Partial<PlatePlugin<ExitBreakPlugin>> = {
   options: {
@@ -15,7 +16,7 @@ export const exitBreakPlugin: Partial<PlatePlugin<ExitBreakPlugin>> = {
         query: {
           start: true,
           end: true,
-          allow: [...KEYS_HEADING],
+          allow: [CUSTOM_ELEMENT_H1],
         },
       },
     ],
