@@ -111,16 +111,7 @@ const EditorIndex: React.FC = () => {
           enabled
           editableProps={{ ...editableProps, decorate: decorate as any }}
           plugins={plugins}
-          initialValue={[
-            {
-              type: "p",
-              children: [
-                {
-                  text: "",
-                },
-              ],
-            },
-          ]}
+          initialValue={initialValue}
           onChange={onChange}
         >
           <SlashToolbar />
@@ -137,3 +128,39 @@ const EditorIndex: React.FC = () => {
 };
 
 export default EditorIndex;
+
+const initialValue = [
+  {
+    type: "p",
+    children: [
+      {
+        text: "dsfdsafsdafsdaf",
+      },
+    ],
+  },
+  {
+    type: "p",
+    children: [
+      {
+        text: "dsfdsafsdafsdaf",
+      },
+    ],
+  },
+  {
+    type: "CUSTOM_IMAGE_ELEMENT",
+    children: [
+      {
+        text: "",
+      },
+    ],
+    url: "https://images.unsplash.com/photo-1662667802628-fb15ff430796?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+  },
+  {
+    type: "custom_elem_h1",
+    children: [
+      {
+        text: "",
+      },
+    ],
+  },
+];

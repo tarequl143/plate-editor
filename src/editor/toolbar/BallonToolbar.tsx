@@ -1,8 +1,11 @@
 import {
   BlockToolbarButton,
+  findNodePath,
+  getNodeParent,
   ELEMENT_TODO_LI,
   getAboveNode,
   getPluginType,
+  insertNodes,
   MarkToolbarButton,
   MARK_BOLD,
   MARK_CODE,
@@ -12,6 +15,7 @@ import {
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
+  removeNodes,
   setNodes,
   toggleNodeType,
   unsetNodes,
@@ -43,6 +47,7 @@ import {
   CUSTOM_ELEMENT_H4,
 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
+import { CUSTOM_IMAGE_INPUT } from "../elements/ImageInput/types";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
@@ -153,6 +158,26 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           icon={<LinkSimple size={24} weight="bold" />}
           setIsLink={setIsLink}
         />
+        <button
+          onClick={() => {
+            const parentNode = getNodeParent(
+              editor,
+              editor.selection?.anchor.path || []
+            );
+            const parentNodepath = findNodePath(editor, parentNode);
+            removeNodes(editor, { at: parentNodepath, hanging: false });
+            insertNodes(
+              editor,
+              {
+                type: CUSTOM_IMAGE_INPUT,
+                children: [],
+              },
+              { at: parentNodepath }
+            );
+          }}
+        >
+          Add Image
+        </button>
       </BaloonToolbarContent>
     </BalloonToolbarWrap>
   );
