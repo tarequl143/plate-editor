@@ -5,14 +5,16 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import { Quotes, WarningCircle } from "phosphor-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
 import { SlashToolbarProps } from "./types";
-import { toggleSlashToolbar } from "./utils";
+import { slashToolbarInitial, toggleSlashToolbar } from "./utils";
 
 const SlashToolbar = (props: SlashToolbarProps) => {
+  const [slashToolbarTarger, setSlashToolbarTarget] = useState<any>("");
+  const [searchTerm, setSearchTerm] = useState("");
   // Props Destructuring
 
   // Baloon Toolobar Ref
@@ -26,8 +28,11 @@ const SlashToolbar = (props: SlashToolbarProps) => {
 
   // Baloon Toolbar Toggle
   useEffect(() => {
-    toggleSlashToolbar(editor, slashToolberRef);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    toggleSlashToolbar(editor, slashToolberRef, slashToolbarTarger);
+  }, [editor, slashToolbarTarger]);
+
+  useEffect(() => {
+    slashToolbarInitial(setSlashToolbarTarget, setSearchTerm);
   }, [selection]);
 
   // Console

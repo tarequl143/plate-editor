@@ -33,6 +33,8 @@ export const SlashToolbarWrap = styled.div`
   max-height: 200px;
   overflow-y: auto;
   opacity: 0;
+  left: -2000px;
+  top: -2000px;
   box-shadow: 0px 10px 30px rgba(56, 63, 69, 0.06);
   border: 1px solid rgba(56, 63, 69, 0.1);
   border-radius: 5px;
