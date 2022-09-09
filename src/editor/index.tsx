@@ -14,11 +14,39 @@ import { CUSTOM_ELEMENT_MENTION_ITEM } from "./elements/Mention/types";
 import { usePlugins } from "./hooks/usePlugins";
 import { EditorMain, EditorWrapper } from "./styles";
 import BallonToolbar from "./toolbar/BallonToolbar";
+import SlashToolbar from "./toolbar/SlashToolbar";
+
+const specialChar = [
+  " ",
+  "@",
+  "!",
+  "#",
+  "$",
+  "%",
+  "^",
+  "&",
+  "*",
+  "(",
+  ")",
+  "-",
+  "_",
+  "=",
+  "+",
+  "{",
+  "}",
+  "[",
+  "]",
+  ",",
+  ".",
+  "?",
+  "~",
+  "<",
+  ">",
+];
 
 const EditorIndex: React.FC = () => {
   const [lastSelection, setLastSelection] = useState<string>("");
   const [isLink, setIsLink] = useState(false);
-  console.log(isLink);
 
   // hook returns all Plugins
   const plugins = usePlugins();
@@ -26,7 +54,7 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins]
+    [plugins],
   );
 
   // On Editor Change
@@ -34,7 +62,7 @@ const EditorIndex: React.FC = () => {
     if (isLink) {
       setIsLink(false);
     }
-    console.log("Value ====>", value);
+    // console.log("Value ====>", value);
 
     if (!editor) return;
 
@@ -69,7 +97,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection]
+    [editor.selection, lastSelection],
   );
 
   // Console
@@ -95,6 +123,7 @@ const EditorIndex: React.FC = () => {
           ]}
           onChange={onChange}
         >
+          <SlashToolbar />
           <BallonToolbar setIsLink={setIsLink} />
           <MentionCombobox
             items={MENTIONABLES}

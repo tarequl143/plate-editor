@@ -1,6 +1,7 @@
 import {
   BlockToolbarButton,
   ELEMENT_TODO_LI,
+  getAboveNode,
   getPluginType,
   MarkToolbarButton,
   MARK_BOLD,
@@ -11,6 +12,9 @@ import {
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
+  setNodes,
+  toggleNodeType,
+  unsetNodes,
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
@@ -129,10 +133,21 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
           icon={<WarningCircle size={24} weight="fill" />}
+          onMouseDown={() => {
+            const getNodeElem = getAboveNode(editor)?.[0]?.type;
+            console.log("Type ======>>", getNodeElem);
+            unsetNodes(editor, ["checked"]);
+            toggleNodeType(editor, {
+              activeType: CUSTOM_ELEMENT_HINT,
+            });
+          }}
         />
         <BlockToolbarButton
           type={getPluginType(editor, ELEMENT_TODO_LI)}
           icon={<CheckSquare size={24} />}
+          onMouseDown={() => {
+            setNodes(editor, { type: ELEMENT_TODO_LI, checked: false });
+          }}
         />
         <LinkToolbarButton
           icon={<LinkSimple size={24} weight="bold" />}
