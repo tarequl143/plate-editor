@@ -17,8 +17,10 @@ import {
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
-import { HeadingPlugins } from "../elements/Headings/createHeadingPlugin";
+import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
+import { createCustomImagePlugin } from "../elements/Image/createImagePlugin";
+import { crateImagePlugin } from "../elements/ImageInput/createImageInputPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
@@ -28,7 +30,7 @@ import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 export const usePlugins = () => {
   const plugins = useMemo(() => {
     const allPlugins = createPlugins([
-      ...HeadingPlugins,
+      ...createHeadingPlugin,
       createBoldPlugin(),
       createCodePlugin(),
       createItalicPlugin(),
@@ -45,6 +47,8 @@ export const usePlugins = () => {
       createSoftBreakPlugin(softBreakPlugin),
       createComboboxPlugin(),
       createMentionPlugin(mentionPlugin),
+      crateImagePlugin(),
+      createCustomImagePlugin(),
     ]);
     return allPlugins;
   }, []);

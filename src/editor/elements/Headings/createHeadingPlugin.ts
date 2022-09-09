@@ -16,7 +16,7 @@ export const headingElementKeys = [
 
 // array of heading plugins
 // uses same component and handlers
-export const HeadingPlugins = headingElementKeys.map((KEY) =>
+export const createHeadingPlugin = headingElementKeys.map((KEY) =>
   createPluginFactory({
     key: KEY,
     isElement: true,
