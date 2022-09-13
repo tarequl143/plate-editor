@@ -21,6 +21,13 @@ import {
   unsetNodes,
   usePlateEditorRef,
   usePlateSelection,
+  TableToolbarButton,
+  insertTable,
+  deleteTable,
+  insertTableRow,
+  deleteRow,
+  insertTableColumn,
+  deleteColumn,
 } from "@udecode/plate";
 import {
   CheckSquare,
@@ -37,6 +44,7 @@ import {
   TextStrikethrough,
   TextUnderline,
   WarningCircle,
+  Airplane,
 } from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
