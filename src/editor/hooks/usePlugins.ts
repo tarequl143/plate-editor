@@ -6,8 +6,8 @@ import {
   createHighlightPlugin,
   createItalicPlugin,
   createLinkPlugin,
+  createListPlugin,
   createMentionPlugin,
-  createPlateUI,
   createPlugins,
   createResetNodePlugin,
   createSoftBreakPlugin,
@@ -17,7 +17,6 @@ import {
   createTablePlugin,
   createTodoListPlugin,
   createUnderlinePlugin,
-  ELEMENT_TABLE,
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
@@ -27,15 +26,14 @@ import { createImagePlugin } from "../elements/Image/createImagePlugin";
 import { createImageOptionPlugin } from "../elements/ImageOption/createImageOptionPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
-import TableElement from "../elements/Table/TableElement";
 import TodoListElement from "../elements/Todolist/TodoListElement";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
 import { resetNodePlugin } from "../resetNode/resetNodePlugin";
 import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 
-export const plateUI = createPlateUI({
-  [ELEMENT_TABLE]: TableElement,
-});
+// export const plateUI = createPlateUI({
+//   [ELEMENT_TABLE]: TableElement,
+// });
 
 export const usePlugins = () => {
   const plugins = useMemo(() => {
@@ -65,10 +63,11 @@ export const usePlugins = () => {
         createImageOptionPlugin(),
         createSoftBreakPlugin(),
         createTablePlugin(),
+        createListPlugin(),
       ],
-      {
-        components: plateUI,
-      },
+      // {
+      //   components: plateUI,
+      // },
     );
     return allPlugins;
   }, []);

@@ -6,6 +6,7 @@ import {
   getNodeParent,
   getPluginType,
   insertNodes,
+  ListToolbarButton,
   MarkToolbarButton,
   MARK_BOLD,
   MARK_CODE,
@@ -27,6 +28,7 @@ import {
   Code,
   HighlighterCircle,
   LinkSimple,
+  ListBullets,
   Quotes,
   TextBolder,
   TextHFour,
@@ -40,6 +42,7 @@ import {
 } from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
+import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import {
   CUSTOM_ELEMENT_H1,
   CUSTOM_ELEMENT_H2,
@@ -157,6 +160,10 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         <LinkToolbarButton
           icon={<LinkSimple size={24} weight="bold" />}
           setIsLink={setIsLink}
+        />
+        <ListToolbarButton
+          type={getPluginType(editor, CUSTOM_ELEMENT_BULLETED_LIST)}
+          icon={<ListBullets size={24} />}
         />
         <button
           onClick={() => {
