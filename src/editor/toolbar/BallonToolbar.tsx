@@ -1,11 +1,8 @@
 import {
   BlockToolbarButton,
   ELEMENT_TODO_LI,
-  findNodePath,
   getAboveNode,
-  getNodeParent,
   getPluginType,
-  insertNodes,
   ListToolbarButton,
   MarkToolbarButton,
   MARK_BOLD,
@@ -16,7 +13,6 @@ import {
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
-  removeNodes,
   setNodes,
   toggleNodeType,
   unsetNodes,
@@ -27,6 +23,7 @@ import {
   CheckSquare,
   Code,
   HighlighterCircle,
+  Image,
   LinkSimple,
   ListBullets,
   Quotes,
@@ -50,7 +47,7 @@ import {
   CUSTOM_ELEMENT_H4,
 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
+import ImageToolbarButton from "./button/ImageToolbarButton";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
@@ -75,9 +72,6 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
       toggleBallonToolbar(editor, ballonToolberRef);
     }
   }, [selection, editor]);
-
-  // Console
-  // console.log("Editor Baloon", editor);
 
   return (
     <BalloonToolbarWrap ref={ballonToolberRef}>
@@ -165,26 +159,7 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           type={getPluginType(editor, CUSTOM_ELEMENT_BULLETED_LIST)}
           icon={<ListBullets size={24} />}
         />
-        <button
-          onClick={() => {
-            const parentNode = getNodeParent(
-              editor,
-              editor.selection?.anchor.path || [],
-            );
-            const parentNodepath = findNodePath(editor, parentNode);
-            removeNodes(editor, { at: parentNodepath, hanging: false });
-            insertNodes(
-              editor,
-              {
-                type: CUSTOM_ELEMENT_IMAGE_OPTION,
-                children: [],
-              },
-              { at: parentNodepath },
-            );
-          }}
-        >
-          Add Image
-        </button>
+        <ImageToolbarButton icon={<Image size={32} />} />
       </BaloonToolbarContent>
     </BalloonToolbarWrap>
   );
