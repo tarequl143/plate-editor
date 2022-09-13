@@ -54,8 +54,9 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins],
+    [plugins]
   );
+  console.log("editor --------------", editor);
 
   // On Editor Change
   const onChange = (value: Value) => {
@@ -97,7 +98,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection],
+    [editor.selection, lastSelection]
   );
 
   // Console
@@ -160,6 +161,73 @@ const initialValue = [
     children: [
       {
         text: "",
+      },
+    ],
+  },
+  {
+    type: "table",
+    children: [
+      {
+        type: "tr",
+        children: [
+          {
+            type: "td",
+            children: [
+              {
+                type: "custom_elem_H4",
+                children: [
+                  {
+                    text: "row 1",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "td",
+            children: [
+              {
+                type: "custom_elem_H4",
+                children: [
+                  {
+                    text: "row 2",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        type: "tr",
+        children: [
+          {
+            type: "td",
+            children: [
+              {
+                type: "p",
+                children: [
+                  {
+                    text: "",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "td",
+            children: [
+              {
+                type: "p",
+                children: [
+                  {
+                    text: "",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
       },
     ],
   },
