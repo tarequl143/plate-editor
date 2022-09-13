@@ -9,10 +9,10 @@ import {
 import { useState } from "react";
 import { Path } from "slate";
 import { CUSTOM_ELEMENT_H1 } from "../Headings/types";
-import { CUSTOM_IMAGE_ELEMENT } from "../Image/types";
-import { ImageLinkInput, ImageWrapper } from "./styles";
+import { CUSTOM_ELEMENT_IMAGE } from "../Image/types";
+import { ImageLinkInput, ImageWrapper } from "./ImageOptionStyle";
 
-const ImageInputElement = (props: PlateRenderElementProps) => {
+const ImageOptionElement = (props: PlateRenderElementProps) => {
   // image url input state
   const [url, setUrl] = useState("");
   // Get Editor Ref
@@ -27,7 +27,7 @@ const ImageInputElement = (props: PlateRenderElementProps) => {
       editor,
       [
         {
-          type: CUSTOM_IMAGE_ELEMENT,
+          type: CUSTOM_ELEMENT_IMAGE,
           children: [],
           url: url,
         },
@@ -37,7 +37,7 @@ const ImageInputElement = (props: PlateRenderElementProps) => {
           children: [],
         },
       ],
-      { at: parentNodepath }
+      { at: parentNodepath },
     );
 
     focusEditor(editor, Path.next(parentNodepath));
@@ -55,4 +55,4 @@ const ImageInputElement = (props: PlateRenderElementProps) => {
   );
 };
 
-export default ImageInputElement;
+export default ImageOptionElement;

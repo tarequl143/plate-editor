@@ -8,7 +8,7 @@ import { Quotes, WarningCircle } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import TableToolbarButtons from "../elements/table/TableToolbarButtons";
+import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
 import { SlashToolbarProps } from "./types";
 import { slashToolbarInitial, toggleSlashToolbar } from "./utils";

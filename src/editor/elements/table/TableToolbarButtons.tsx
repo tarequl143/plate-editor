@@ -9,7 +9,7 @@ import {
 } from "@udecode/plate";
 import { Airplane, Columns, Rows, Table } from "phosphor-react";
 import React from "react";
-import { ToolbarButtonWrapper } from "./styles";
+import { ToolbarButtonWrapper } from "./TableStyle";
 
 type Props = {
   showAddTableOnly?: boolean;

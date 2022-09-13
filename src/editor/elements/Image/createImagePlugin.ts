@@ -1,9 +1,9 @@
 import { createPluginFactory, ImagePlugin } from "@udecode/plate";
 import ImageElement from "./ImageElement";
-import { CUSTOM_IMAGE_ELEMENT } from "./types";
+import { CUSTOM_ELEMENT_IMAGE } from "./types";
 
-export const createCustomImagePlugin = createPluginFactory<ImagePlugin>({
-  key: CUSTOM_IMAGE_ELEMENT,
+export const createImagePlugin = createPluginFactory<ImagePlugin>({
+  key: CUSTOM_ELEMENT_IMAGE,
   isElement: true,
   component: ImageElement,
   isVoid: true,

@@ -1,5 +1,5 @@
 import { PlateRenderElementProps } from "@udecode/plate";
-import { StyledTable, ToolbarButtonWrapper } from "./styles";
+import { StyledTable, ToolbarButtonWrapper } from "./TableStyle";
 import TableToolbarButtons from "./TableToolbarButtons";
 
 const TableElement = (props: PlateRenderElementProps) => {

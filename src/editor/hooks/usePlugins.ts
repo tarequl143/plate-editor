@@ -23,11 +23,11 @@ import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
-import { createCustomImagePlugin } from "../elements/Image/createImagePlugin";
-import { crateImagePlugin } from "../elements/ImageInput/createImageInputPlugin";
+import { createImagePlugin } from "../elements/Image/createImagePlugin";
+import { createImageOptionPlugin } from "../elements/ImageOption/createImageOptionPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
-import TableElement from "../elements/table/TableElement";
+import TableElement from "../elements/Table/TableElement";
 import TodoListElement from "../elements/Todolist/TodoListElement";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
 import { resetNodePlugin } from "../resetNode/resetNodePlugin";
@@ -61,14 +61,14 @@ export const usePlugins = () => {
         createSoftBreakPlugin(softBreakPlugin),
         createComboboxPlugin(),
         createMentionPlugin(mentionPlugin),
-        crateImagePlugin(),
-        createCustomImagePlugin(),
+        createImagePlugin(),
+        createImageOptionPlugin(),
         createSoftBreakPlugin(),
         createTablePlugin(),
       ],
       {
         components: plateUI,
-      }
+      },
     );
     return allPlugins;
   }, []);

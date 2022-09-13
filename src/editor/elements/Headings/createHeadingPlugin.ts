@@ -24,14 +24,5 @@ export const createHeadingPlugin = headingElementKeys.map((KEY) =>
     handlers: {
       onKeyDown: onKeyDownToggleElement,
     },
-  })()
+  })(),
 );
-
-// export const createH1Plugin = createPluginFactory({
-//   key: CUSTOM_ELEMENT_H1,
-//   isElement: true,
-//   component: HeadingElement,
-//   handlers: {
-//     onKeyDown: onKeyDownToggleElement,
-//   },
-// });

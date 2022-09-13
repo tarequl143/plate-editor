@@ -1,1 +1,0 @@
-export const CUSTOM_IMAGE_INPUT = "CUSTOM_IMAGE_INPUT";

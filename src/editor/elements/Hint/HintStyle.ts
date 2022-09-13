@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const ElementWrapper = styled.div`
   position: relative;
-  /* border-left: 4px solid #f58967; */
   padding: 12px 15px 12px 36px;
   background-color: rgba(245, 137, 103, 0.1);
   color: #666666;

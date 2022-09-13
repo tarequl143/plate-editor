@@ -1,1 +1,1 @@
-export const CUSTOM_IMAGE_ELEMENT = "CUSTOM_IMAGE_ELEMENT";
+export const CUSTOM_ELEMENT_IMAGE = "custom_elem_image";

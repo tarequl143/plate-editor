@@ -8,41 +8,14 @@ import {
 import { useCallback, useMemo, useState } from "react";
 import { Path, Text } from "slate";
 import { editableProps } from "./editableProps";
+import { CUSTOM_ELEMENT_IMAGE } from "./elements/Image/types";
 import { MENTIONABLES } from "./elements/Mention/Mentionable";
 import { MentionItem } from "./elements/Mention/MentionElement";
 import { CUSTOM_ELEMENT_MENTION_ITEM } from "./elements/Mention/types";
 import { usePlugins } from "./hooks/usePlugins";
-import { EditorMain, EditorWrapper } from "./styles";
+import { EditorMain, EditorWrapper, PageWrapper } from "./styles";
 import BallonToolbar from "./toolbar/BallonToolbar";
 import SlashToolbar from "./toolbar/SlashToolbar";
-
-const specialChar = [
-  " ",
-  "@",
-  "!",
-  "#",
-  "$",
-  "%",
-  "^",
-  "&",
-  "*",
-  "(",
-  ")",
-  "-",
-  "_",
-  "=",
-  "+",
-  "{",
-  "}",
-  "[",
-  "]",
-  ",",
-  ".",
-  "?",
-  "~",
-  "<",
-  ">",
-];
 
 const EditorIndex: React.FC = () => {
   const [lastSelection, setLastSelection] = useState<string>("");
@@ -54,7 +27,7 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins]
+    [plugins],
   );
   console.log("editor --------------", editor);
 
@@ -98,33 +71,35 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection]
+    [editor.selection, lastSelection],
   );
 
   // Console
   // console.log("Main Editor ==========>");
 
   return (
-    <EditorWrapper>
-      <EditorMain id="main-editor">
-        <Plate
-          editor={editor}
-          enabled
-          editableProps={{ ...editableProps, decorate: decorate as any }}
-          plugins={plugins}
-          initialValue={initialValue}
-          onChange={onChange}
-        >
-          <SlashToolbar />
-          <BallonToolbar setIsLink={setIsLink} />
-          <MentionCombobox
-            items={MENTIONABLES}
-            pluginKey={CUSTOM_ELEMENT_MENTION_ITEM}
-            onRenderItem={MentionItem}
-          />
-        </Plate>
-      </EditorMain>
-    </EditorWrapper>
+    <PageWrapper>
+      <EditorWrapper>
+        <EditorMain id="main-editor">
+          <Plate
+            editor={editor}
+            enabled
+            editableProps={{ ...editableProps, decorate: decorate as any }}
+            plugins={plugins}
+            initialValue={initialValue}
+            onChange={onChange}
+          >
+            <SlashToolbar />
+            <BallonToolbar setIsLink={setIsLink} />
+            <MentionCombobox
+              items={MENTIONABLES}
+              pluginKey={CUSTOM_ELEMENT_MENTION_ITEM}
+              onRenderItem={MentionItem}
+            />
+          </Plate>
+        </EditorMain>
+      </EditorWrapper>
+    </PageWrapper>
   );
 };
 
@@ -148,7 +123,7 @@ const initialValue = [
     ],
   },
   {
-    type: "CUSTOM_IMAGE_ELEMENT",
+    type: CUSTOM_ELEMENT_IMAGE,
     children: [
       {
         text: "",

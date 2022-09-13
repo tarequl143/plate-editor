@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const PageWrapper = styled.div`
+  position: relative;
+  padding-left: 200px;
+`;
+
 export const EditorWrapper = styled.div`
   width: 600px;
   max-width: 100%;

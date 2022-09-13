@@ -1,6 +1,6 @@
 import { PlateRenderElementProps } from "@udecode/plate";
 import { useFocused, useSelected } from "slate-react";
-import { Img, Imgwrapper } from "./styles";
+import { Img, Imgwrapper } from "./ImageStyle";
 
 const ImageElement = (props: PlateRenderElementProps) => {
   const selected = useSelected();

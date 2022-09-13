@@ -1,9 +1,9 @@
 import {
   BlockToolbarButton,
-  findNodePath,
-  getNodeParent,
   ELEMENT_TODO_LI,
+  findNodePath,
   getAboveNode,
+  getNodeParent,
   getPluginType,
   insertNodes,
   MarkToolbarButton,
@@ -21,13 +21,6 @@ import {
   unsetNodes,
   usePlateEditorRef,
   usePlateSelection,
-  TableToolbarButton,
-  insertTable,
-  deleteTable,
-  insertTableRow,
-  deleteRow,
-  insertTableColumn,
-  deleteColumn,
 } from "@udecode/plate";
 import {
   CheckSquare,
@@ -44,7 +37,6 @@ import {
   TextStrikethrough,
   TextUnderline,
   WarningCircle,
-  Airplane,
 } from "phosphor-react";
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
@@ -55,7 +47,7 @@ import {
   CUSTOM_ELEMENT_H4,
 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import { CUSTOM_IMAGE_INPUT } from "../elements/ImageInput/types";
+import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
@@ -170,17 +162,17 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           onClick={() => {
             const parentNode = getNodeParent(
               editor,
-              editor.selection?.anchor.path || []
+              editor.selection?.anchor.path || [],
             );
             const parentNodepath = findNodePath(editor, parentNode);
             removeNodes(editor, { at: parentNodepath, hanging: false });
             insertNodes(
               editor,
               {
-                type: CUSTOM_IMAGE_INPUT,
+                type: CUSTOM_ELEMENT_IMAGE_OPTION,
                 children: [],
               },
-              { at: parentNodepath }
+              { at: parentNodepath },
             );
           }}
         >
