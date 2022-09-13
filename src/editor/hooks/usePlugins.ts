@@ -1,6 +1,6 @@
+import { CUSTOM_ELEMENT_CODE_BLOCK } from "./../elements/CodeBlock/types";
 import {
   createBoldPlugin,
-  createCodePlugin,
   createComboboxPlugin,
   createExitBreakPlugin,
   createHighlightPlugin,
@@ -19,6 +19,7 @@ import {
   createTodoListPlugin,
   createUnderlinePlugin,
   ELEMENT_TABLE,
+  // createCodeBlockPlugin,
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
@@ -33,9 +34,12 @@ import TodoListElement from "../elements/Todolist/TodoListElement";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
 import { resetNodePlugin } from "../resetNode/resetNodePlugin";
 import { softBreakPlugin } from "../softBreak/softBreakPlugin";
+import CodeBlockElement from "../elements/CodeBlock/CodeBlockElement";
+import { createCodeBlockPlugin } from "../elements/CodeBlock/createCodeblockPlugin";
 
 export const plateUI = createPlateUI({
   [ELEMENT_TABLE]: TableElement,
+  // [CUSTOM_ELEMENT_CODE_BLOCK]: CodeBlockElement,
 });
 
 export const usePlugins = () => {
@@ -44,7 +48,6 @@ export const usePlugins = () => {
       [
         ...createHeadingPlugin,
         createBoldPlugin(),
-        createCodePlugin(),
         createItalicPlugin(),
         createHighlightPlugin(),
         createUnderlinePlugin(),
@@ -67,10 +70,11 @@ export const usePlugins = () => {
         createSoftBreakPlugin(),
         createTablePlugin(),
         createListPlugin(),
+        createCodeBlockPlugin(),
       ],
       {
         components: plateUI,
-      },
+      }
     );
     return allPlugins;
   }, []);

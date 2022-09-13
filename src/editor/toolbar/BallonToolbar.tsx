@@ -6,7 +6,6 @@ import {
   ListToolbarButton,
   MarkToolbarButton,
   MARK_BOLD,
-  MARK_CODE,
   MARK_HIGHLIGHT,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
@@ -40,6 +39,7 @@ import {
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
+import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import {
   CUSTOM_ELEMENT_H1,
   CUSTOM_ELEMENT_H2,
@@ -95,10 +95,6 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         <MarkToolbarButton
           type={getPluginType(editor, MARK_HIGHLIGHT)}
           icon={<HighlighterCircle size={24} />}
-        />
-        <MarkToolbarButton
-          type={getPluginType(editor, MARK_CODE)}
-          icon={<Code size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_SUPERSCRIPT)}
@@ -160,6 +156,10 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           icon={<ListBullets size={24} />}
         />
         <ImageToolbarButton icon={<Image size={32} />} />
+        <BlockToolbarButton
+          icon={<Code size={24} />}
+          type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
+        />
       </BaloonToolbarContent>
     </BalloonToolbarWrap>
   );

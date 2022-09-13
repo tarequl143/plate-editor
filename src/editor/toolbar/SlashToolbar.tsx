@@ -4,9 +4,10 @@ import {
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
-import { Quotes, WarningCircle } from "phosphor-react";
+import { Code, Quotes, WarningCircle } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
+import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
@@ -36,9 +37,6 @@ const SlashToolbar = (props: SlashToolbarProps) => {
     slashToolbarInitial(setSlashToolbarTarget, setSearchTerm);
   }, [selection]);
 
-  // Console
-  // console.log("Editor Baloon", editor);
-
   return (
     <SlashToolbarWrap ref={slashToolberRef}>
       <SlashToolbarContent>
@@ -51,6 +49,10 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           icon={<WarningCircle size={32} weight="fill" />}
         />
         <TableToolbarButtons showAddTableOnly />
+        <BlockToolbarButton
+          icon={<Code size={24} />}
+          type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
+        />
       </SlashToolbarContent>
     </SlashToolbarWrap>
   );
