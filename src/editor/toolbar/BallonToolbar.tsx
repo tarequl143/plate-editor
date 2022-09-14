@@ -1,12 +1,9 @@
 import {
-  BlockToolbarButton,
-  ELEMENT_TODO_LI,
   findNodePath,
   getAboveNode,
   getNodeParent,
   getPluginType,
   insertNodes,
-  ListToolbarButton,
   MarkToolbarButton,
   MARK_BOLD,
   MARK_CODE,
@@ -17,7 +14,6 @@ import {
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
   removeNodes,
-  setNodes,
   toggleNodeType,
   unsetNodes,
   usePlateEditorRef,
@@ -51,6 +47,8 @@ import {
 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
+import { CUSTOM_ELEMENT_TODO_LIST } from "../elements/Todolist/types";
+import { CustomToolbarButton } from "./button/CustomToolbarButton";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
@@ -117,29 +115,29 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
           clear={getPluginType(editor, MARK_SUPERSCRIPT)}
         />
         {/* heading buttons */}
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_H1)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_H1}
           icon={<TextHOne size={24} />}
         />
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_H2)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_H2}
           icon={<TextHTwo size={32} />}
         />
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_H3)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_H3}
           icon={<TextHThree size={32} />}
         />
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_H4)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_H4}
           icon={<TextHFour size={32} />}
         />
         {/* heading buttons ends*/}
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_BLOCKQUOTE}
           icon={<Quotes size={24} weight="fill" />}
         />
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_HINT}
           icon={<WarningCircle size={24} weight="fill" />}
           onMouseDown={() => {
             const getNodeElem = getAboveNode(editor)?.[0]?.type;
@@ -150,19 +148,16 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
             });
           }}
         />
-        <BlockToolbarButton
-          type={getPluginType(editor, ELEMENT_TODO_LI)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_TODO_LIST}
           icon={<CheckSquare size={24} />}
-          onMouseDown={() => {
-            setNodes(editor, { type: ELEMENT_TODO_LI, checked: false });
-          }}
         />
         <LinkToolbarButton
           icon={<LinkSimple size={24} weight="bold" />}
           setIsLink={setIsLink}
         />
-        <ListToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_BULLETED_LIST)}
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_BULLETED_LIST}
           icon={<ListBullets size={24} />}
         />
         <button

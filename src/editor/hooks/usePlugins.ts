@@ -6,7 +6,6 @@ import {
   createHighlightPlugin,
   createItalicPlugin,
   createLinkPlugin,
-  createListPlugin,
   createMentionPlugin,
   createPlateUI,
   createPlugins,
@@ -16,20 +15,22 @@ import {
   createSubscriptPlugin,
   createSuperscriptPlugin,
   createTablePlugin,
-  createTodoListPlugin,
   createUnderlinePlugin,
   ELEMENT_TABLE,
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
+import { createBulletedListPlugin } from "../elements/BulletedList/createBulletedListPlugin";
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { createImagePlugin } from "../elements/Image/createImagePlugin";
 import { createImageOptionPlugin } from "../elements/ImageOption/createImageOptionPlugin";
 import { linkPlugin } from "../elements/Link/linkPlugin";
+import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
+import { createOrderedListPlugin } from "../elements/OrderedList/createOrderedListPlugin";
 import TableElement from "../elements/Table/TableElement";
-import TodoListElement from "../elements/Todolist/TodoListElement";
+import { createTodoListPlugin } from "../elements/Todolist/createTodoListPlugin";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
 import { resetNodePlugin } from "../resetNode/resetNodePlugin";
 import { softBreakPlugin } from "../softBreak/softBreakPlugin";
@@ -53,9 +54,7 @@ export const usePlugins = () => {
         createSuperscriptPlugin(),
         createBlockquotePlugin(),
         createHintPlugin(),
-        createTodoListPlugin({
-          component: TodoListElement,
-        }),
+        createTodoListPlugin(),
         createLinkPlugin(linkPlugin),
         createResetNodePlugin(resetNodePlugin),
         createExitBreakPlugin(exitBreakPlugin),
@@ -66,6 +65,9 @@ export const usePlugins = () => {
         createImageOptionPlugin(),
         createSoftBreakPlugin(),
         createTablePlugin(),
+        // createListPlugin(),
+        createBulletedListPlugin(),
+        createOrderedListPlugin(),
         createListPlugin(),
       ],
       {

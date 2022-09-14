@@ -4,11 +4,19 @@ import {
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
-import { Quotes, WarningCircle } from "phosphor-react";
+import {
+  ListBullets,
+  ListNumbers,
+  Quotes,
+  WarningCircle,
+} from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
+import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
+import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
+import { CustomToolbarButton } from "./button/CustomToolbarButton";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
 import { SlashToolbarProps } from "./types";
 import { slashToolbarInitial, toggleSlashToolbar } from "./utils";
@@ -49,6 +57,14 @@ const SlashToolbar = (props: SlashToolbarProps) => {
         <BlockToolbarButton
           type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
           icon={<WarningCircle size={32} weight="fill" />}
+        />
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_BULLETED_LIST}
+          icon={<ListBullets size={24} />}
+        />
+        <CustomToolbarButton
+          type={CUSTOM_ELEMENT_ORDERED_LIST}
+          icon={<ListNumbers size={24} />}
         />
         <TableToolbarButtons showAddTableOnly />
       </SlashToolbarContent>

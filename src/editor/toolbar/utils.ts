@@ -1,4 +1,5 @@
 import {
+  getAboveNode,
   getEditorString,
   getPlateEditorRef,
   getPoint,
@@ -223,4 +224,12 @@ export const slashToolbarInitial = (
     setSlashToolbarTarget(null);
     setSearchTerm("");
   }
+};
+
+export const getCurrentNodeType = (editor: TEditor<Value>) => {
+  return getAboveNode(editor)?.[0]?.type;
+};
+
+export const getCurrentNodePath = (editor: TEditor<Value>) => {
+  return getAboveNode(editor)?.[1];
 };

@@ -1,15 +1,13 @@
-// import { getToggleElementOnKeyDown } from '@udecode/plate';
-// import { PlatePlugin } from '@udecode/plate-core';
-// import { getCustomElementRenderer } from '../renderers/getCustomElementRenderer';
-// import { CUSTOM_ELEMENT_ORDERED_LIST } from './types';
+import { onKeyDownToggleElement } from "@udecode/plate";
+import { PlatePlugin } from "@udecode/plate-core";
+import OrderedListElement from "./OrderedListElement";
+import { CUSTOM_ELEMENT_ORDERED_LIST } from "./types";
 
-// /**
-//  * Enables support for images.
-//  */
-// export const createOrderedListPlugin = (): PlatePlugin => ({
-//   pluginKeys: CUSTOM_ELEMENT_ORDERED_LIST,
-//   renderElement: getCustomElementRenderer(CUSTOM_ELEMENT_ORDERED_LIST),
-//   onKeyDown: getToggleElementOnKeyDown(CUSTOM_ELEMENT_ORDERED_LIST)
-// });
-
-export {};
+export const createOrderedListPlugin = (): PlatePlugin => ({
+  key: CUSTOM_ELEMENT_ORDERED_LIST,
+  isElement: true,
+  component: OrderedListElement,
+  handlers: {
+    onKeyDown: onKeyDownToggleElement,
+  },
+});
