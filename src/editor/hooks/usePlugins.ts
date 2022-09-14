@@ -32,6 +32,7 @@ import { linkPlugin } from "../elements/Link/linkPlugin";
 import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
 import { createOrderedListPlugin } from "../elements/OrderedList/createOrderedListPlugin";
+import { createSpacerPlugin } from "../elements/Spacer/createSpacerPlugin";
 import TableElement from "../elements/Table/TableElement";
 import { createTodoListPlugin } from "../elements/Todolist/createTodoListPlugin";
 import { exitBreakPlugin } from "../exitBreak/exitBreakPlugin";
@@ -80,10 +81,11 @@ export const usePlugins = () => {
             },
           },
         }),
+        createSpacerPlugin(),
       ],
       {
         components: plateUI,
-      },
+      }
     );
     return allPlugins;
   }, []);
