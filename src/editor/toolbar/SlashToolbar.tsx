@@ -5,6 +5,7 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import {
+  Code,
   ListBullets,
   ListNumbers,
   Quotes,
@@ -13,6 +14,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
+import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
@@ -44,9 +46,6 @@ const SlashToolbar = (props: SlashToolbarProps) => {
     slashToolbarInitial(setSlashToolbarTarget, setSearchTerm);
   }, [selection]);
 
-  // Console
-  // console.log("Editor Baloon", editor);
-
   return (
     <SlashToolbarWrap ref={slashToolberRef}>
       <SlashToolbarContent>
@@ -67,6 +66,10 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           icon={<ListNumbers size={24} />}
         />
         <TableToolbarButtons showAddTableOnly />
+        <BlockToolbarButton
+          icon={<Code size={24} />}
+          type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
+        />
       </SlashToolbarContent>
     </SlashToolbarWrap>
   );

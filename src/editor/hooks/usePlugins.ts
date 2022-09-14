@@ -1,6 +1,5 @@
 import {
   createBoldPlugin,
-  createCodePlugin,
   createComboboxPlugin,
   createExitBreakPlugin,
   createHighlightPlugin,
@@ -21,6 +20,7 @@ import {
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
 import { createBulletedListPlugin } from "../elements/BulletedList/createBulletedListPlugin";
+import { createCodeBlockPlugin } from "../elements/CodeBlock/createCodeblockPlugin";
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { createImagePlugin } from "../elements/Image/createImagePlugin";
@@ -37,6 +37,7 @@ import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 
 export const plateUI = createPlateUI({
   [ELEMENT_TABLE]: TableElement,
+  // [CUSTOM_ELEMENT_CODE_BLOCK]: CodeBlockElement,
 });
 
 export const usePlugins = () => {
@@ -45,7 +46,6 @@ export const usePlugins = () => {
       [
         ...createHeadingPlugin,
         createBoldPlugin(),
-        createCodePlugin(),
         createItalicPlugin(),
         createHighlightPlugin(),
         createUnderlinePlugin(),
@@ -69,6 +69,7 @@ export const usePlugins = () => {
         createBulletedListPlugin(),
         createOrderedListPlugin(),
         createListPlugin(),
+        createCodeBlockPlugin(),
       ],
       {
         components: plateUI,

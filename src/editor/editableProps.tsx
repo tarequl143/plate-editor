@@ -1,22 +1,11 @@
-import {
-  getPlateEditorRef,
-  RenderLeafFn,
-  TEditableProps,
-  Value,
-} from "@udecode/plate";
-import { CustomAutoFormatRules } from "./customAutoFormatRules/CustomAutoFormatRules";
-import { LeafRenderer } from "./renderer/LeafRenderer";
+import { RenderLeafFn, TEditableProps, Value } from "@udecode/plate";
 
-const onKeyDown = (event: any) => {
-  const editor = getPlateEditorRef();
-  CustomAutoFormatRules(editor, event);
-};
+import { LeafRenderer } from "./renderer/LeafRenderer";
 
 export const editableProps: TEditableProps = {
   spellCheck: false,
   autoFocus: false,
   readOnly: false,
-  onKeyDown,
   placeholder: "Click here to start writing..",
   renderLeaf: LeafRenderer as RenderLeafFn<Value>,
 };

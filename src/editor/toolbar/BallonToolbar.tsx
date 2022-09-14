@@ -1,21 +1,13 @@
 import {
-  findNodePath,
-  getAboveNode,
-  getNodeParent,
   getPluginType,
-  insertNodes,
   MarkToolbarButton,
   MARK_BOLD,
-  MARK_CODE,
   MARK_HIGHLIGHT,
   MARK_ITALIC,
   MARK_STRIKETHROUGH,
   MARK_SUBSCRIPT,
   MARK_SUPERSCRIPT,
   MARK_UNDERLINE,
-  removeNodes,
-  toggleNodeType,
-  unsetNodes,
   usePlateEditorRef,
   usePlateSelection,
 } from "@udecode/plate";
@@ -23,6 +15,7 @@ import {
   CheckSquare,
   Code,
   HighlighterCircle,
+  Image,
   LinkSimple,
   ListBullets,
   Quotes,
@@ -39,6 +32,7 @@ import {
 import { useEffect, useRef } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
+import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import {
   CUSTOM_ELEMENT_H1,
   CUSTOM_ELEMENT_H2,
@@ -46,9 +40,9 @@ import {
   CUSTOM_ELEMENT_H4,
 } from "../elements/Headings/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
 import { CUSTOM_ELEMENT_TODO_LIST } from "../elements/Todolist/types";
 import { CustomToolbarButton } from "./button/CustomToolbarButton";
+import ImageToolbarButton from "./button/ImageToolbarButton";
 import { LinkToolbarButton } from "./button/LinkToolbarButton";
 import { BalloonToolbarWrap, BaloonToolbarContent } from "./ToolbarStyles";
 import { BaloonToolbarProps } from "./types";
@@ -74,9 +68,6 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
     }
   }, [selection, editor]);
 
-  // Console
-  // console.log("Editor Baloon", editor);
-
   return (
     <BalloonToolbarWrap ref={ballonToolberRef}>
       <BaloonToolbarContent>
@@ -99,10 +90,6 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         <MarkToolbarButton
           type={getPluginType(editor, MARK_HIGHLIGHT)}
           icon={<HighlighterCircle size={24} />}
-        />
-        <MarkToolbarButton
-          type={getPluginType(editor, MARK_CODE)}
-          icon={<Code size={24} />}
         />
         <MarkToolbarButton
           type={getPluginType(editor, MARK_SUPERSCRIPT)}
@@ -139,47 +126,26 @@ const BallonToolbar = (props: BaloonToolbarProps) => {
         <CustomToolbarButton
           type={CUSTOM_ELEMENT_HINT}
           icon={<WarningCircle size={24} weight="fill" />}
-          onMouseDown={() => {
-            const getNodeElem = getAboveNode(editor)?.[0]?.type;
-            console.log("Type ======>>", getNodeElem);
-            unsetNodes(editor, ["checked"]);
-            toggleNodeType(editor, {
-              activeType: CUSTOM_ELEMENT_HINT,
-            });
-          }}
         />
         <CustomToolbarButton
           type={CUSTOM_ELEMENT_TODO_LIST}
           icon={<CheckSquare size={24} />}
         />
-        <LinkToolbarButton
-          icon={<LinkSimple size={24} weight="bold" />}
-          setIsLink={setIsLink}
-        />
+
         <CustomToolbarButton
           type={CUSTOM_ELEMENT_BULLETED_LIST}
           icon={<ListBullets size={24} />}
         />
-        <button
-          onClick={() => {
-            const parentNode = getNodeParent(
-              editor,
-              editor.selection?.anchor.path || [],
-            );
-            const parentNodepath = findNodePath(editor, parentNode);
-            removeNodes(editor, { at: parentNodepath, hanging: false });
-            insertNodes(
-              editor,
-              {
-                type: CUSTOM_ELEMENT_IMAGE_OPTION,
-                children: [],
-              },
-              { at: parentNodepath },
-            );
-          }}
-        >
-          Add Image
-        </button>
+
+        <CustomToolbarButton
+          icon={<Code size={24} />}
+          type={CUSTOM_ELEMENT_CODE_BLOCK}
+        />
+        <ImageToolbarButton icon={<Image size={32} />} />
+        <LinkToolbarButton
+          icon={<LinkSimple size={24} weight="bold" />}
+          setIsLink={setIsLink}
+        />
       </BaloonToolbarContent>
     </BalloonToolbarWrap>
   );

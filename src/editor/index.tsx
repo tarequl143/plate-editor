@@ -7,6 +7,7 @@ import {
 } from "@udecode/plate";
 import { useCallback, useMemo, useState } from "react";
 import { Path, Text } from "slate";
+import { defaultValue } from "./defaultEditorvalue";
 import { editableProps } from "./editableProps";
 import { CUSTOM_ELEMENT_IMAGE } from "./elements/Image/types";
 import { MENTIONABLES } from "./elements/Mention/Mentionable";
@@ -27,7 +28,7 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins],
+    [plugins]
   );
   console.log("editor --------------", editor);
 
@@ -71,7 +72,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection],
+    [editor.selection, lastSelection]
   );
 
   // Console
@@ -86,7 +87,7 @@ const EditorIndex: React.FC = () => {
             enabled
             editableProps={{ ...editableProps, decorate: decorate as any }}
             plugins={plugins}
-            initialValue={initialValue}
+            initialValue={defaultValue}
             onChange={onChange}
           >
             <SlashToolbar />
@@ -104,106 +105,3 @@ const EditorIndex: React.FC = () => {
 };
 
 export default EditorIndex;
-
-const initialValue = [
-  {
-    type: "p",
-    children: [
-      {
-        text: "dsfdsafsdafsdaf",
-      },
-    ],
-  },
-  {
-    type: "p",
-    children: [
-      {
-        text: "dsfdsafsdafsdaf",
-      },
-    ],
-  },
-  {
-    type: CUSTOM_ELEMENT_IMAGE,
-    children: [
-      {
-        text: "",
-      },
-    ],
-    url: "https://images.unsplash.com/photo-1662667802628-fb15ff430796?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
-  },
-  {
-    type: "custom_elem_h1",
-    children: [
-      {
-        text: "",
-      },
-    ],
-  },
-  {
-    type: "table",
-    children: [
-      {
-        type: "tr",
-        children: [
-          {
-            type: "td",
-            children: [
-              {
-                type: "custom_elem_H4",
-                children: [
-                  {
-                    text: "row 1",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            type: "td",
-            children: [
-              {
-                type: "custom_elem_H4",
-                children: [
-                  {
-                    text: "row 2",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        type: "tr",
-        children: [
-          {
-            type: "td",
-            children: [
-              {
-                type: "p",
-                children: [
-                  {
-                    text: "",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            type: "td",
-            children: [
-              {
-                type: "p",
-                children: [
-                  {
-                    text: "",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-];
