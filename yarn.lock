@@ -2414,6 +2414,14 @@
   dependencies:
     "@udecode/plate-core" "16.5.0"
 
+"@udecode/plate-code-block@^16.8.0":
+  "integrity" "sha512-mtFy2IPuPF62qzMnqol6qk6Ag7dPco547Blcwf7UI/RFcRuCuX8/O/4phokz3ji35dZ06/oTrWWf0kGOpR/8Lw=="
+  "resolved" "https://registry.npmjs.org/@udecode/plate-code-block/-/plate-code-block-16.8.0.tgz"
+  "version" "16.8.0"
+  dependencies:
+    "@udecode/plate-core" "16.8.0"
+    "prismjs" "^1.25.0"
+
 "@udecode/plate-code-block@16.5.0":
   "integrity" "sha512-5y4naXXAbHzorgQpXhyiuVCjfD76RWM6iEx7VaQZmkeDucPejML52apNPj9nAE0s7FLSF489E2BA5531unXK7A=="
   "resolved" "https://registry.npmjs.org/@udecode/plate-code-block/-/plate-code-block-16.5.0.tgz"
