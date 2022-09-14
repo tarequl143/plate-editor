@@ -9,6 +9,7 @@ import {
   createPlateUI,
   createPlugins,
   createResetNodePlugin,
+  createSelectOnBackspacePlugin,
   createSoftBreakPlugin,
   createStrikethroughPlugin,
   createSubscriptPlugin,
@@ -24,7 +25,9 @@ import { createCodeBlockPlugin } from "../elements/CodeBlock/createCodeblockPlug
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { createImagePlugin } from "../elements/Image/createImagePlugin";
+import { CUSTOM_ELEMENT_IMAGE } from "../elements/Image/types";
 import { createImageOptionPlugin } from "../elements/ImageOption/createImageOptionPlugin";
+import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
@@ -70,6 +73,13 @@ export const usePlugins = () => {
         createOrderedListPlugin(),
         createListPlugin(),
         createCodeBlockPlugin(),
+        createSelectOnBackspacePlugin({
+          options: {
+            query: {
+              allow: [CUSTOM_ELEMENT_IMAGE, CUSTOM_ELEMENT_IMAGE_OPTION],
+            },
+          },
+        }),
       ],
       {
         components: plateUI,

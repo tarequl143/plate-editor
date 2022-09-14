@@ -10,8 +10,6 @@ const HintElement = (props: RenderElementProps) => {
   const focused = useFocused();
   const id = nanoid();
 
-  console.log("Hint props", props);
-
   return (
     <ElementWrapper
       {...attributes}

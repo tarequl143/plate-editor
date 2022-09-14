@@ -9,8 +9,6 @@ const TodoListElement = (props: any) => {
   const readOnly = useReadOnly();
   const { checked } = element;
 
-  console.log("Todo List Props", props);
-
   return (
     <ElementWrapper {...attributes} className="checklist-element">
       <CheckboxWrapper contentEditable={false} suppressContentEditableWarning>

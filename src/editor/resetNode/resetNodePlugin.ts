@@ -4,7 +4,9 @@ import {
   isBlockAboveEmpty,
   isSelectionAtBlockStart,
   PlatePlugin,
+  removeNodes,
   ResetNodePlugin,
+  setNodes,
   unsetNodes,
   unwrapNodes,
 } from "@udecode/plate";
@@ -13,10 +15,16 @@ import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
+import { CUSTOM_ELEMENT_IMAGE } from "../elements/Image/types";
+import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
 import { CUSTOM_ELEMENT_LIST_ITEM } from "../elements/ListItem/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_TODO_LIST } from "../elements/Todolist/types";
-import { getCurrentNodePath, getCurrentNodeType } from "../toolbar/utils";
+import {
+  getCurrentNodeLastChildrenLastText,
+  getCurrentNodePath,
+  getCurrentNodeType,
+} from "../toolbar/utils";
 
 const LIST_TYPES = [CUSTOM_ELEMENT_ORDERED_LIST, CUSTOM_ELEMENT_BULLETED_LIST];
 const LIST_ITEMS = [CUSTOM_ELEMENT_LIST_ITEM, CUSTOM_ELEMENT_TODO_LIST];
@@ -24,6 +32,13 @@ const SOFT_BREAK_ELEMENTS = [
   CUSTOM_ELEMENT_HINT,
   CUSTOM_ELEMENT_CODE_BLOCK,
   CUSTOM_ELEMENT_BLOCKQUOTE,
+];
+
+const VOID_ELEMENTS = [
+  CUSTOM_ELEMENT_IMAGE,
+  CUSTOM_ELEMENT_IMAGE_OPTION,
+  // CUSTOM_ELEMENT_SEPERATOR,
+  // CUSTOM_ELEMENT_SPACER,
 ];
 
 const resetBlockTypesCommonRule = {
@@ -48,6 +63,7 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
         onReset(editor) {
           const nodeType = getCurrentNodeType(editor) as string;
           const nodePath = getCurrentNodePath(editor);
+
           if (nodeType === CUSTOM_ELEMENT_TODO_LIST) {
             insertNodes(
               editor,
@@ -65,8 +81,37 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
         },
       },
       {
+        types: [...SOFT_BREAK_ELEMENTS],
+        hotkey: "Enter",
+        predicate(editor) {
+          const lastChildren = getCurrentNodeLastChildrenLastText(editor);
+          if (lastChildren.slice(-1) === "\n") {
+            return true;
+          }
+          return false;
+        },
+        onReset(editor) {
+          const nodeType = getCurrentNodeType(editor);
+          const nodePath = getCurrentNodePath(editor);
+          editor.deleteBackward("character");
+          editor.deleteBackward("character");
+          setNodes(editor, { type: nodeType });
+          insertNodes(
+            editor,
+            {
+              type: ELEMENT_PARAGRAPH,
+              children: [{ text: "" }],
+            },
+            {
+              at: Path.next(nodePath as Path),
+              select: true,
+            },
+          );
+        },
+      },
+      {
         ...resetBlockTypesCommonRule,
-        hotkey: "Backspace",
+        hotkey: ["Backspace", "delete"],
         predicate: isSelectionAtBlockStart,
         onReset(editor) {
           unwrapNodes(editor, {
@@ -75,6 +120,20 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
           });
           unsetNodes(editor, ["checked", "id"], {
             match: (n: any) => n.type === CUSTOM_ELEMENT_TODO_LIST,
+          });
+        },
+      },
+      {
+        types: [...VOID_ELEMENTS],
+        hotkey: "Backspace" || "delete",
+        predicate(editor) {
+          const nodeType = getCurrentNodeType(editor) as string;
+          return VOID_ELEMENTS.includes(nodeType);
+        },
+        onReset(editor) {
+          const nodePath = getCurrentNodePath(editor);
+          removeNodes(editor, {
+            at: nodePath,
           });
         },
       },

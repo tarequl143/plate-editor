@@ -11,8 +11,6 @@ const BlockquoteElement = (props: RenderElementProps) => {
   const focused = useFocused();
   const id = nanoid();
 
-  console.log("Blockquote props", props);
-
   return (
     <ElementWrapper
       {...attributes}

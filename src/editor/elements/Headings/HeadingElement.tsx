@@ -18,7 +18,6 @@ const HeadingElement = (props: RenderElementProps) => {
   const selected = useSelected();
   const focused = useFocused();
   const id = nanoid();
-  console.log("Heading props", props);
 
   // heading type
   const elementType: Elements = (

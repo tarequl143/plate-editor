@@ -9,7 +9,6 @@ import { useCallback, useMemo, useState } from "react";
 import { Path, Text } from "slate";
 import { defaultValue } from "./defaultEditorvalue";
 import { editableProps } from "./editableProps";
-import { CUSTOM_ELEMENT_IMAGE } from "./elements/Image/types";
 import { MENTIONABLES } from "./elements/Mention/Mentionable";
 import { MentionItem } from "./elements/Mention/MentionElement";
 import { CUSTOM_ELEMENT_MENTION_ITEM } from "./elements/Mention/types";
@@ -28,9 +27,8 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins]
+    [plugins],
   );
-  console.log("editor --------------", editor);
 
   // On Editor Change
   const onChange = (value: Value) => {
@@ -72,7 +70,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection]
+    [editor.selection, lastSelection],
   );
 
   // Console

@@ -180,6 +180,7 @@ export const slashToolbarInitial = (
   setSearchTerm: Dispatch<SetStateAction<string>>,
 ) => {
   const editor = getPlateEditorRef() as TEditor<Value>;
+
   const { selection } = editor;
 
   if (selection && Range.isCollapsed(selection)) {
@@ -232,4 +233,13 @@ export const getCurrentNodeType = (editor: TEditor<Value>) => {
 
 export const getCurrentNodePath = (editor: TEditor<Value>) => {
   return getAboveNode(editor)?.[1];
+};
+
+export const getCurrentNodeLastChildrenLastText = (editor: TEditor<Value>) => {
+  const currentNode = getAboveNode(editor);
+  console.log(currentNode);
+
+  const nodeChildren = currentNode?.[0]?.children;
+  const lastChildrenText = nodeChildren?.[nodeChildren.length - 1].text;
+  return lastChildrenText as string;
 };
