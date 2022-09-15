@@ -5,6 +5,7 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import {
+  ArrowsVertical,
   Code,
   ListBullets,
   ListNumbers,
@@ -17,6 +18,8 @@ import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
+import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
+import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { CustomToolbarButton } from "./button/CustomToolbarButton";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
@@ -69,6 +72,14 @@ const SlashToolbar = (props: SlashToolbarProps) => {
         <BlockToolbarButton
           icon={<Code size={24} />}
           type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
+        />
+        <CustomToolbarButton
+          icon={<ArrowsVertical size={32} />} // TODO update icon
+          type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
+        />
+        <CustomToolbarButton
+          icon={<ArrowsVertical size={32} />} // TODO update icon
+          type={CUSTOM_ELEMENT_SEPERATOR}
         />
       </SlashToolbarContent>
     </SlashToolbarWrap>

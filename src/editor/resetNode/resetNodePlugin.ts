@@ -19,6 +19,8 @@ import { CUSTOM_ELEMENT_IMAGE } from "../elements/Image/types";
 import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
 import { CUSTOM_ELEMENT_LIST_ITEM } from "../elements/ListItem/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
+import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
+import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
 import { CUSTOM_ELEMENT_TODO_LIST } from "../elements/Todolist/types";
 import {
   getCurrentNodeLastChildrenLastText,
@@ -34,11 +36,15 @@ const SOFT_BREAK_ELEMENTS = [
   CUSTOM_ELEMENT_BLOCKQUOTE,
 ];
 
-const VOID_ELEMENTS = [
+export const SEPARATOR_AND_SPACER = [
+  CUSTOM_ELEMENT_SEPERATOR,
+  CUSTOM_ELEMENT_SPACER,
+];
+
+export const VOID_ELEMENTS = [
   CUSTOM_ELEMENT_IMAGE,
   CUSTOM_ELEMENT_IMAGE_OPTION,
-  // CUSTOM_ELEMENT_SEPERATOR,
-  // CUSTOM_ELEMENT_SPACER,
+  ...SEPARATOR_AND_SPACER,
 ];
 
 const resetBlockTypesCommonRule = {
@@ -75,7 +81,7 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
               {
                 at: Path.next(nodePath as Path),
                 select: true,
-              },
+              }
             );
           }
         },
@@ -105,7 +111,7 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
             {
               at: Path.next(nodePath as Path),
               select: true,
-            },
+            }
           );
         },
       },
