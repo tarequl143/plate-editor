@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Path } from "slate";
 import { useFocused, useSelected } from "slate-react";
 import {
-  SeparatorWrapper,
+  SpacerWrapper,
   SpacerCloneIcon,
   SpacerDeleteIcon,
 } from "./SpacerStyle";
@@ -38,7 +38,7 @@ const SpacerElement = (props: PlateRenderElementProps) => {
   };
 
   return (
-    <SeparatorWrapper
+    <SpacerWrapper
       {...props.attributes}
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
@@ -51,7 +51,7 @@ const SpacerElement = (props: PlateRenderElementProps) => {
           <SpacerDeleteIcon onClick={handleDelete} />
         </>
       )}
-    </SeparatorWrapper>
+    </SpacerWrapper>
   );
 };
 

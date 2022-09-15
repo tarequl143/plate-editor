@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 import { Copy, Trash } from "phosphor-react";
 
-export const SeparatorWrapper = styled.div<{ focused: boolean }>`
+export const SpacerWrapper = styled.div<{ focused: boolean }>`
   height: 32px;
   padding: 0px 10px;
   display: flex;
