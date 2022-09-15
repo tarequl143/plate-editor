@@ -16,6 +16,7 @@ import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
+import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
@@ -80,6 +81,10 @@ const SlashToolbar = (props: SlashToolbarProps) => {
         <CustomToolbarButton
           icon={<ArrowsVertical size={32} />} // TODO update icon
           type={CUSTOM_ELEMENT_SEPERATOR}
+        />
+        <CustomToolbarButton
+          icon={<ArrowsVertical size={32} />} // TODO update icon
+          type={CUSTOM_ELEMENT_EMBED}
         />
       </SlashToolbarContent>
     </SlashToolbarWrap>

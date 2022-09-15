@@ -1,3 +1,4 @@
+import { CUSTOM_ELEMENT_EMBED_DATA } from "./../elements/EmbedData/types";
 import {
   createBoldPlugin,
   createComboboxPlugin,
@@ -22,6 +23,8 @@ import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
 import { createBulletedListPlugin } from "../elements/BulletedList/createBulletedListPlugin";
 import { createCodeBlockPlugin } from "../elements/CodeBlock/createCodeblockPlugin";
+import { createEmbedPlugin } from "../elements/Embed/createEmbedPlugin";
+import { createEmbedDataPlugin } from "../elements/EmbedData/createEmbedDataPlugin";
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
 import { createImagePlugin } from "../elements/Image/createImagePlugin";
@@ -83,6 +86,8 @@ export const usePlugins = () => {
         }),
         createSpacerPlugin(),
         createSeparatorPlugin(),
+        createEmbedPlugin(),
+        createEmbedDataPlugin(),
       ],
       {
         components: plateUI,
