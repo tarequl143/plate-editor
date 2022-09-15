@@ -43,6 +43,7 @@ const SpacerElement = (props: PlateRenderElementProps) => {
       onMouseEnter={() => setShowButtons(true)}
       onMouseLeave={() => setShowButtons(false)}
       focused={focused && selected}
+      contentEditable={false}
     >
       {props.children}
       {showButtons && (
