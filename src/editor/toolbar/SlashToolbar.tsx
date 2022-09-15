@@ -5,10 +5,11 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import {
-  ArrowsVertical,
+  BatteryEmpty,
   Code,
   ListBullets,
   ListNumbers,
+  Minus,
   Quotes,
   WarningCircle,
 } from "phosphor-react";
@@ -74,11 +75,11 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<BatteryEmpty size={24} />}
           type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<Minus size={24} />}
           type={CUSTOM_ELEMENT_SEPERATOR}
         />
       </SlashToolbarContent>
