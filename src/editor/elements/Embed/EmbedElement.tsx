@@ -8,6 +8,7 @@ import {
 import React, { useState } from "react";
 import { Path } from "slate";
 import { CUSTOM_ELEMENT_EMBED_DATA } from "../EmbedData/types";
+import { removeElement } from "../utils";
 import {
   CloseButton,
   EmbedWrapper,
@@ -36,10 +37,12 @@ export const getEmbedFormattedUrl = (userInputUrl: string) => {
 };
 
 const EmbedElement = (props: PlateRenderElementProps) => {
-  const { attributes, children } = props;
+  const { attributes, children, element } = props;
   const editor = usePlateEditorRef()!;
 
   const [url, setUrl] = useState("");
+
+  const nodePath = findNodePath(editor, props.element)!;
 
   const handleEmbedUrlInput: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -55,7 +58,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       },
       {
         at: Path.next(currentPath),
-      }
+      },
     );
     // remove embed input node
     removeNodes(editor, {
@@ -71,7 +74,11 @@ const EmbedElement = (props: PlateRenderElementProps) => {
           <h2>Embed Design</h2>
           <p>Paste link to embed design from Figma</p>
         </div>
-        <CloseButton />
+        <CloseButton
+          onMouseDown={(e) => {
+            removeElement(e as any, editor, element);
+          }}
+        />
       </FormHeader>
       <UrlForm onSubmit={handleEmbedUrlInput}>
         <UrlInput onChange={(e) => setUrl(e.target.value)} type="url" />

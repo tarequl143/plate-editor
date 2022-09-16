@@ -10,8 +10,10 @@ import {
   ListBullets,
   ListNumbers,
   Minus,
+  PencilSimple,
   Quotes,
   WarningCircle,
+  YoutubeLogo,
 } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
@@ -21,6 +23,7 @@ import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
+import { CUSTOM_ELEMENT_SKETCH } from "../elements/Sketch/types";
 import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { CustomToolbarButton } from "./button/CustomToolbarButton";
@@ -84,8 +87,12 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           type={CUSTOM_ELEMENT_SEPERATOR}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<YoutubeLogo size={24} />} // TODO update icon
           type={CUSTOM_ELEMENT_EMBED}
+        />
+        <CustomToolbarButton
+          icon={<PencilSimple size={24} />} // TODO update icon
+          type={CUSTOM_ELEMENT_SKETCH}
         />
       </SlashToolbarContent>
     </SlashToolbarWrap>
