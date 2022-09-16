@@ -1,3 +1,4 @@
+import { Button } from "@getonnet/tixio-ui-core";
 import {
   findNodePath,
   insertNodes,
@@ -15,7 +16,6 @@ import {
   FormHeader,
   UrlForm,
   UrlInput,
-  UrlSubmitButton,
 } from "./EmbedStyle";
 
 export const getEmbedFormattedUrl = (userInputUrl: string) => {
@@ -59,7 +59,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       },
       {
         at: Path.next(currentPath),
-      },
+      }
     );
     // remove embed input node
     removeNodes(editor, {
@@ -73,7 +73,12 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       <FormHeader>
         <div>
           <h2>Embed {type === "design" ? "Design" : "Video"}</h2>
-          <p>Paste link to embed design from Figma</p>
+          <p>
+            Embed{" "}
+            {type === "design"
+              ? "Paste link to embed design from Figma"
+              : "Paste link to embed design from Youtube"}
+          </p>
         </div>
         <CloseButton
           onMouseDown={(e) => {
@@ -82,8 +87,25 @@ const EmbedElement = (props: PlateRenderElementProps) => {
         />
       </FormHeader>
       <UrlForm onSubmit={handleEmbedUrlInput}>
-        <UrlInput onChange={(e) => setUrl(e.target.value)} type="url" />
-        <UrlSubmitButton disabled={!url.length}>Create</UrlSubmitButton>
+        <UrlInput
+          onChange={(e) => setUrl(e.target.value)}
+          type="url"
+          placeholder={
+            type === "design"
+              ? "https://www.figma.com/file/..."
+              : "https://www.youtube.com/watch?v..."
+          }
+        />
+        <Button
+          size="md"
+          ml="auto"
+          mt={24}
+          sx={{
+            display: "block",
+          }}
+        >
+          Create
+        </Button>
       </UrlForm>
     </EmbedWrapper>
   );

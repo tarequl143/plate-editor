@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { X } from "phosphor-react";
+import styled from "styled-components";
 
 export const EmbedWrapper = styled.div`
   padding: 24px;
@@ -39,22 +39,6 @@ export const UrlInput = styled.input`
   border-radius: 6px;
   color: #9ca3af;
   font-size: 14px;
-`;
-
-export const UrlSubmitButton = styled.button`
-  display: block;
-  background-color: #1e22fb;
-  color: white;
-  border: none;
-  font-size: 16px;
-  padding: 12px 24px;
-  border-radius: 8px;
-  margin-left: auto;
-  margin-top: 24px;
-  cursor: pointer;
-  &:disabled {
-    opacity: 0.4;
-  }
 `;
 
 export const CloseButton = styled(X)`

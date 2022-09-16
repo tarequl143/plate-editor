@@ -1374,7 +1374,7 @@
     "@floating-ui/dom" "^0.5.3"
     use-isomorphic-layout-effect "^1.1.1"
 
-"@getonnet/tixio-ui-core@^5.1.0":
+"@getonnet/tixio-ui-core@^5.2.0":
   version "5.4.0"
   resolved "https://npm.pkg.github.com/download/@Getonnet/tixio-ui-core/5.4.0/9e09ca0a2edd3b519c5ae5846d06c5a908465fde#9e09ca0a2edd3b519c5ae5846d06c5a908465fde"
   integrity sha512-RafUm95emedSZZp/p0OS8mZ+PotAT+9xdwd9/y85rNhQqWMxpo4EtufjXr3xMLLzmDAjroglaztQ2IIz4/7npw==
@@ -1385,22 +1385,22 @@
     react-popper "^2.2.5"
     react-textarea-autosize "^8.3.2"
 
-"@getonnet/tixio-ui-form@^5.1.0":
+"@getonnet/tixio-ui-form@^5.2.0":
   version "5.4.0"
   resolved "https://npm.pkg.github.com/download/@Getonnet/tixio-ui-form/5.4.0/c42aebf2cb9acda2a79088f8e792d149695f8bfe#c42aebf2cb9acda2a79088f8e792d149695f8bfe"
   integrity sha512-jzXoDOW+BQ5+L/xtgVETYAxZY/N+iPedcoFkld0cm1hd8fqKyvnWkREZFZgYBJ6Kp2eo2zCGkUWCSmPAa+kU4w==
 
-"@getonnet/tixio-ui-hooks@^5.1.0":
+"@getonnet/tixio-ui-hooks@^5.2.0":
   version "5.4.0"
   resolved "https://npm.pkg.github.com/download/@Getonnet/tixio-ui-hooks/5.4.0/68371583a07533b772395cb5ea80b746e302f445#68371583a07533b772395cb5ea80b746e302f445"
   integrity sha512-hj8Ts+aNzXSVzGD4JuW5mRDviBDW1QH0YKSFWmJ5GAc0HbgAWJGN7jRB0SfZ6LcG1O7CG7Dvr8E5Bms3Nocv9g==
 
-"@getonnet/tixio-ui-modals@^5.1.0":
+"@getonnet/tixio-ui-modals@^5.2.0":
   version "5.4.0"
   resolved "https://npm.pkg.github.com/download/@Getonnet/tixio-ui-modals/5.4.0/e4ea70e70852e52233cf8f91235875138c7aae1c#e4ea70e70852e52233cf8f91235875138c7aae1c"
   integrity sha512-lJPjaEuYbAuiyjen0f/u36zMuxUDI/X52UldQ9tnd4oU24C15jTBasUWU89RV6Vj1BGuYpmjCMfX6RBrdLywPw==
 
-"@getonnet/tixio-ui-notifications@^5.1.0":
+"@getonnet/tixio-ui-notifications@^5.2.0":
   version "5.4.0"
   resolved "https://npm.pkg.github.com/download/@Getonnet/tixio-ui-notifications/5.4.0/3cbdd4eef22df240ada255b9275703f17ce7829a#3cbdd4eef22df240ada255b9275703f17ce7829a"
   integrity sha512-FjFZoghHlMT5NeFEMyvcFWkQ9mJU2RJu08zrFGT9zBrY+4rCKBms82rUF77pA/E3rCnRzbslxSS7WLp76D7a6w==

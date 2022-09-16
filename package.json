@@ -21,11 +21,6 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "@getonnet/tixio-ui-core": "^5.1.0",
-    "@getonnet/tixio-ui-form": "^5.1.0",
-    "@getonnet/tixio-ui-hooks": "^5.1.0",
-    "@getonnet/tixio-ui-modals": "^5.1.0",
-    "@getonnet/tixio-ui-notifications": "^5.1.0",
     "react-scripts": "5.0.1",
     "slate": "^0.82.1",
     "slate-history": "^0.66.0",
@@ -33,7 +28,12 @@
     "slate-react": "^0.82.1",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "@getonnet/tixio-ui-core": "^5.2.0",
+    "@getonnet/tixio-ui-form": "^5.2.0",
+    "@getonnet/tixio-ui-hooks": "^5.2.0",
+    "@getonnet/tixio-ui-modals": "^5.2.0",
+    "@getonnet/tixio-ui-notifications": "^5.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
