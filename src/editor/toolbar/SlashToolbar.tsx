@@ -7,10 +7,12 @@ import {
 import {
   ArrowsVertical,
   Code,
+  FigmaLogo,
   ListBullets,
   ListNumbers,
   Quotes,
   WarningCircle,
+  YoutubeLogo,
 } from "phosphor-react";
 import { useEffect, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
@@ -83,8 +85,18 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           type={CUSTOM_ELEMENT_SEPERATOR}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<FigmaLogo size={24} />} // TODO update icon
           type={CUSTOM_ELEMENT_EMBED}
+          additionalProps={{
+            type: "design",
+          }}
+        />
+        <CustomToolbarButton
+          icon={<YoutubeLogo size={24} />} // TODO update icon
+          type={CUSTOM_ELEMENT_EMBED}
+          additionalProps={{
+            type: "video",
+          }}
         />
       </SlashToolbarContent>
     </SlashToolbarWrap>
