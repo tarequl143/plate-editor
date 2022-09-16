@@ -9,17 +9,13 @@ import {
   wrapNodes,
 } from "@udecode/plate";
 import { ToolbarButtonProps } from "@udecode/plate-ui-toolbar";
-import { Path } from "slate";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_EMBED } from "../../elements/Embed/types";
 import { CUSTOM_ELEMENT_LIST_ITEM } from "../../elements/ListItem/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_TODO_LIST } from "../../elements/Todolist/types";
 import { createEmptyParagraph } from "../../elements/utils";
-import {
-  SEPARATOR_AND_SPACER,
-  VOID_ELEMENTS,
-} from "../../resetNode/resetNodePlugin";
+import { SEPARATOR_AND_SPACER } from "../../resetNode/resetNodePlugin";
 import { getCurrentNodePath } from "../utils";
 
 export const CustomToolbarButton = ({

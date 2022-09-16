@@ -6,10 +6,6 @@ export const BalloonToolbarWrap = styled.div`
   top: -2000px;
   z-index: 10;
   opacity: 0;
-  background-color: #ffffff;
-  box-shadow: 0px 10px 30px rgba(56, 63, 69, 0.14);
-  border: 1px solid rgba(56, 63, 69, 0.1);
-  border-radius: 6px;
   transition: opacity 0.75s ease 0s, border 0.3s ease;
   box-sizing: border-box;
   width: max-content;
@@ -21,6 +17,29 @@ export const BaloonToolbarContent = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  padding: 8px;
+  background-color: #ffffff;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px -2px rgba(16, 24, 40, 0.1),
+    0px 4px 6px -1px rgba(16, 24, 40, 0.1);
+  border: 1px solid #e5e7eb;
+  > span {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+    color: #6b7280;
+    &:last-child {
+      margin-right: 0;
+    }
+    svg {
+      width: auto;
+      height: auto;
+    }
+  }
+  span.slate-ToolbarButton-active {
+    color: #4b4efc;
+  }
 `;
 
 export const SlashToolbarWrap = styled.div`
@@ -49,4 +68,15 @@ export const SlashToolbarContent = styled.div`
   margin: 0;
   vertical-align: middle;
   padding: 4px;
+  span {
+    position: relative;
+    width: 25%;
+    padding: 8px 8px 8px 44px;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    box-sizing: border-box;
+    height: 44px;
+  }
 `;

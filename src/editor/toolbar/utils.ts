@@ -207,6 +207,7 @@ export const slashToolbarInitial = (
       start.offset === 0 ? beforeRange : beforeRangeDis,
     );
     const lastCharOfBeforeWord = beforeWord.slice(-1);
+
     if (
       beforeCharacter === "/" ||
       beforeCharacter === " /" ||
@@ -220,7 +221,9 @@ export const slashToolbarInitial = (
         !specialChar.includes(lastCharOfBeforeWord))
     ) {
       setSlashToolbarTarget(target);
-      setSearchTerm(beforeWord.replace("/", "").trim());
+      if (lastCharOfBeforeWord !== "/") {
+        setSearchTerm(beforeWord.replace("/", "").trim());
+      }
       return;
     }
     setSlashToolbarTarget(null);

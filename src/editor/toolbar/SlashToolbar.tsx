@@ -1,33 +1,8 @@
-import {
-  BlockToolbarButton,
-  getPluginType,
-  usePlateEditorRef,
-  usePlateSelection,
-} from "@udecode/plate";
-import {
-  BatteryEmpty,
-  Code,
-  FigmaLogo,
-  ListBullets,
-  ListNumbers,
-  Minus,
-  PencilSimple,
-  Quotes,
-  WarningCircle,
-  YoutubeLogo,
-} from "phosphor-react";
-import { useEffect, useRef, useState } from "react";
-import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
-import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
-import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
-import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
-import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
-import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
-import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
-import { CUSTOM_ELEMENT_SKETCH } from "../elements/Sketch/types";
-import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
+import { usePlateEditorRef, usePlateSelection } from "@udecode/plate";
+import { useEffect, useMemo, useRef, useState } from "react";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { CustomToolbarButton } from "./button/CustomToolbarButton";
+import { SlashToolbarElements } from "./SlashToolbarElements";
 import { SlashToolbarContent, SlashToolbarWrap } from "./ToolbarStyles";
 import { SlashToolbarProps } from "./types";
 import { slashToolbarInitial, toggleSlashToolbar } from "./utils";
@@ -35,7 +10,6 @@ import { slashToolbarInitial, toggleSlashToolbar } from "./utils";
 const SlashToolbar = (props: SlashToolbarProps) => {
   const [slashToolbarTarger, setSlashToolbarTarget] = useState<any>("");
   const [searchTerm, setSearchTerm] = useState("");
-  // Props Destructuring
 
   // Baloon Toolobar Ref
   const slashToolberRef: any = useRef();
@@ -45,6 +19,19 @@ const SlashToolbar = (props: SlashToolbarProps) => {
 
   // Get Editor Selection
   const selection = usePlateSelection()!;
+
+  // Toolbar Filtered Elements
+  const filteredToolbarElements = useMemo(() => {
+    return searchTerm
+      ? SlashToolbarElements.filter((element) =>
+          element.title.toLowerCase().includes(searchTerm.toLowerCase()),
+        )
+      : SlashToolbarElements;
+  }, [searchTerm]);
+  // const filterToolbar = filteredToolbarElements();
+
+  // console.log("Search Term", searchTerm);
+  console.log(filteredToolbarElements);
 
   // Baloon Toolbar Toggle
   useEffect(() => {
@@ -57,55 +44,75 @@ const SlashToolbar = (props: SlashToolbarProps) => {
 
   return (
     <SlashToolbarWrap ref={slashToolberRef}>
-      <SlashToolbarContent>
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
-          icon={<Quotes size={32} weight="fill" />}
-        />
-        <BlockToolbarButton
-          type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
-          icon={<WarningCircle size={32} weight="fill" />}
-        />
-        <CustomToolbarButton
-          type={CUSTOM_ELEMENT_BULLETED_LIST}
-          icon={<ListBullets size={24} />}
-        />
-        <CustomToolbarButton
-          type={CUSTOM_ELEMENT_ORDERED_LIST}
-          icon={<ListNumbers size={24} />}
-        />
-        <TableToolbarButtons showAddTableOnly />
-        <BlockToolbarButton
-          icon={<Code size={24} />}
-          type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
-        />
-        <CustomToolbarButton
-          icon={<BatteryEmpty size={24} />}
-          type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
-        />
-        <CustomToolbarButton
-          icon={<Minus size={24} />}
-          type={CUSTOM_ELEMENT_SEPERATOR}
-        />
-        <CustomToolbarButton
-          icon={<FigmaLogo size={24} />}
-          type={CUSTOM_ELEMENT_EMBED}
-          additionalProps={{
-            type: "design",
-          }}
-        />
-        <CustomToolbarButton
-          icon={<YoutubeLogo size={24} />}
-          type={CUSTOM_ELEMENT_EMBED}
-          additionalProps={{
-            type: "video",
-          }}
-        />
-        <CustomToolbarButton
-          icon={<PencilSimple size={24} />} 
-          type={CUSTOM_ELEMENT_SKETCH}
-        />
-      </SlashToolbarContent>
+      {filteredToolbarElements?.length > 0 ? (
+        <SlashToolbarContent>
+          {filteredToolbarElements.map((element, index) => {
+            if (element.type === "TABLE") {
+              return <TableToolbarButtons showAddTableOnly key={index} />;
+            } else {
+              return (
+                <CustomToolbarButton
+                  key={index}
+                  type={element.type}
+                  icon={element.icon}
+                  as={element.as}
+                  onMouseDown={element.mouseDown as any}
+                />
+              );
+            }
+          })}
+        </SlashToolbarContent>
+      ) : // <BlockToolbarButton
+      //   type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
+      //   icon={<Quotes size={32} weight="fill" />}
+      // />
+      // <BlockToolbarButton
+      //   type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
+      //   icon={<WarningCircle size={32} weight="fill" />}
+      // />
+
+      // <ImageToolbarButton icon={<Image size={24} weight="duotone" />} />
+      // <CustomToolbarButton
+      //   type={CUSTOM_ELEMENT_BULLETED_LIST}
+      //   icon={<ListBullets size={24} />}
+      // />
+      // <CustomToolbarButton
+      //   type={CUSTOM_ELEMENT_ORDERED_LIST}
+      //   icon={<ListNumbers size={24} />}
+      // />
+      // <TableToolbarButtons showAddTableOnly />
+      // <BlockToolbarButton
+      //   icon={<Code size={24} />}
+      //   type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
+      // />
+      // <CustomToolbarButton
+      //   icon={<BatteryEmpty size={24} />}
+      //   type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
+      // />
+      // <CustomToolbarButton
+      //   icon={<Minus size={24} />}
+      //   type={CUSTOM_ELEMENT_SEPERATOR}
+      // />
+      // <CustomToolbarButton
+      //   icon={<FigmaLogo size={24} />}
+      //   type={CUSTOM_ELEMENT_EMBED}
+      //   additionalProps={{
+      //     type: "design",
+      //   }}
+      // />
+      // <CustomToolbarButton
+      //   icon={<YoutubeLogo size={24} />}
+      //   type={CUSTOM_ELEMENT_EMBED}
+      //   additionalProps={{
+      //     type: "video",
+      //   }}
+      // />
+      // <CustomToolbarButton
+      //   icon={<PencilSimple size={24} />}
+      //   type={CUSTOM_ELEMENT_SKETCH}
+      // />
+
+      null}
     </SlashToolbarWrap>
   );
 };
