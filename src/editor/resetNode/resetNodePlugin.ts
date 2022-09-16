@@ -6,7 +6,6 @@ import {
   PlatePlugin,
   removeNodes,
   ResetNodePlugin,
-  setNodes,
   unsetNodes,
   unwrapNodes,
 } from "@udecode/plate";
@@ -22,11 +21,7 @@ import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
 import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
 import { CUSTOM_ELEMENT_TODO_LIST } from "../elements/Todolist/types";
-import {
-  getCurrentNodeLastChildrenLastText,
-  getCurrentNodePath,
-  getCurrentNodeType,
-} from "../toolbar/utils";
+import { getCurrentNodePath, getCurrentNodeType } from "../toolbar/utils";
 
 const LIST_TYPES = [CUSTOM_ELEMENT_ORDERED_LIST, CUSTOM_ELEMENT_BULLETED_LIST];
 const LIST_ITEMS = [CUSTOM_ELEMENT_LIST_ITEM, CUSTOM_ELEMENT_TODO_LIST];
@@ -70,7 +65,19 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
           const nodeType = getCurrentNodeType(editor) as string;
           const nodePath = getCurrentNodePath(editor);
 
+          console.log("Node Type", nodeType);
+
+          unwrapNodes(editor, {
+            match: (n: any) => LIST_TYPES.includes(n.type),
+            split: true,
+          });
+          unsetNodes(editor, ["checked", "id"], {
+            match: (n: any) => n.type === CUSTOM_ELEMENT_TODO_LIST,
+          });
+
           if (nodeType === CUSTOM_ELEMENT_TODO_LIST) {
+            console.log("sdzfwdsfswes");
+
             insertNodes(
               editor,
               {
@@ -87,26 +94,27 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
         },
       },
       {
-        types: [...SOFT_BREAK_ELEMENTS],
+        types: [CUSTOM_ELEMENT_TODO_LIST],
         hotkey: "Enter",
+        defaultType: CUSTOM_ELEMENT_TODO_LIST,
         predicate(editor) {
-          const lastChildren = getCurrentNodeLastChildrenLastText(editor);
-          if (lastChildren.slice(-1) === "\n") {
+          const nodeType = getCurrentNodeType(editor) as string;
+          if (nodeType === CUSTOM_ELEMENT_TODO_LIST) {
             return true;
           }
           return false;
         },
         onReset(editor) {
-          const nodeType = getCurrentNodeType(editor);
+          const nodeType = getCurrentNodeType(editor) as string;
+          console.log(nodeType);
+
           const nodePath = getCurrentNodePath(editor);
-          editor.deleteBackward("character");
-          editor.deleteBackward("character");
-          setNodes(editor, { type: nodeType });
           insertNodes(
             editor,
             {
-              type: ELEMENT_PARAGRAPH,
+              type: CUSTOM_ELEMENT_TODO_LIST,
               children: [{ text: "" }],
+              checked: false,
             },
             {
               at: Path.next(nodePath as Path),

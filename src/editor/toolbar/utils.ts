@@ -6,6 +6,7 @@ import {
   getRangeBefore,
   PlateEditor,
   TEditor,
+  TNodeEntry,
   Value,
 } from "@udecode/plate";
 import { Dispatch, RefObject, SetStateAction } from "react";
@@ -235,11 +236,8 @@ export const getCurrentNodePath = (editor: TEditor<Value>) => {
   return getAboveNode(editor)?.[1];
 };
 
-export const getCurrentNodeLastChildrenLastText = (editor: TEditor<Value>) => {
-  const currentNode = getAboveNode(editor);
-  console.log(currentNode);
-
-  const nodeChildren = currentNode?.[0]?.children;
+export const getCurrentNodeLastChildrenLastText = (entry: TNodeEntry<any>) => {
+  const nodeChildren = entry?.[0]?.children;
   const lastChildrenText = nodeChildren?.[nodeChildren.length - 1].text;
   return lastChildrenText as string;
 };

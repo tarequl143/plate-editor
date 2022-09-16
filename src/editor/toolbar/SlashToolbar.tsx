@@ -5,11 +5,13 @@ import {
   usePlateSelection,
 } from "@udecode/plate";
 import {
-  ArrowsVertical,
+  BatteryEmpty,
   Code,
   FigmaLogo,
   ListBullets,
   ListNumbers,
+  Minus,
+  PencilSimple,
   Quotes,
   WarningCircle,
   YoutubeLogo,
@@ -22,6 +24,7 @@ import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_ORDERED_LIST } from "../elements/OrderedList/types";
 import { CUSTOM_ELEMENT_SEPERATOR } from "../elements/Separator/types";
+import { CUSTOM_ELEMENT_SKETCH } from "../elements/Sketch/types";
 import { CUSTOM_ELEMENT_SPACER } from "../elements/Spacer/types";
 import TableToolbarButtons from "../elements/Table/TableToolbarButtons";
 import { CustomToolbarButton } from "./button/CustomToolbarButton";
@@ -77,26 +80,30 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<BatteryEmpty size={24} />}
           type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
         />
         <CustomToolbarButton
-          icon={<ArrowsVertical size={32} />} // TODO update icon
+          icon={<Minus size={24} />}
           type={CUSTOM_ELEMENT_SEPERATOR}
         />
         <CustomToolbarButton
-          icon={<FigmaLogo size={24} />} // TODO update icon
+          icon={<FigmaLogo size={24} />}
           type={CUSTOM_ELEMENT_EMBED}
           additionalProps={{
             type: "design",
           }}
         />
         <CustomToolbarButton
-          icon={<YoutubeLogo size={24} />} // TODO update icon
+          icon={<YoutubeLogo size={24} />}
           type={CUSTOM_ELEMENT_EMBED}
           additionalProps={{
             type: "video",
           }}
+        />
+        <CustomToolbarButton
+          icon={<PencilSimple size={24} />} 
+          type={CUSTOM_ELEMENT_SKETCH}
         />
       </SlashToolbarContent>
     </SlashToolbarWrap>

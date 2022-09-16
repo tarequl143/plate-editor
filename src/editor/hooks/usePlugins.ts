@@ -1,4 +1,3 @@
-import { CUSTOM_ELEMENT_EMBED_DATA } from "./../elements/EmbedData/types";
 import {
   createBoldPlugin,
   createComboboxPlugin,
@@ -36,6 +35,7 @@ import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
 import { createOrderedListPlugin } from "../elements/OrderedList/createOrderedListPlugin";
 import { createSeparatorPlugin } from "../elements/Separator/createSeparatorPlugin";
+import { createSketchPlugin } from "../elements/Sketch/createSketchPlugin";
 import { createSpacerPlugin } from "../elements/Spacer/createSpacerPlugin";
 import TableElement from "../elements/Table/TableElement";
 import { createTodoListPlugin } from "../elements/Todolist/createTodoListPlugin";
@@ -88,10 +88,11 @@ export const usePlugins = () => {
         createSeparatorPlugin(),
         createEmbedPlugin(),
         createEmbedDataPlugin(),
+        createSketchPlugin(),
       ],
       {
         components: plateUI,
-      }
+      },
     );
     return allPlugins;
   }, []);
