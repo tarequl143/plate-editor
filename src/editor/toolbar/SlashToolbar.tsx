@@ -7,6 +7,7 @@ import {
 import {
   BatteryEmpty,
   Code,
+  FigmaLogo,
   ListBullets,
   ListNumbers,
   Minus,
@@ -87,11 +88,21 @@ const SlashToolbar = (props: SlashToolbarProps) => {
           type={CUSTOM_ELEMENT_SEPERATOR}
         />
         <CustomToolbarButton
-          icon={<YoutubeLogo size={24} />} // TODO update icon
+          icon={<FigmaLogo size={24} />}
           type={CUSTOM_ELEMENT_EMBED}
+          additionalProps={{
+            type: "design",
+          }}
         />
         <CustomToolbarButton
-          icon={<PencilSimple size={24} />} // TODO update icon
+          icon={<YoutubeLogo size={24} />}
+          type={CUSTOM_ELEMENT_EMBED}
+          additionalProps={{
+            type: "video",
+          }}
+        />
+        <CustomToolbarButton
+          icon={<PencilSimple size={24} />} 
           type={CUSTOM_ELEMENT_SKETCH}
         />
       </SlashToolbarContent>

@@ -38,6 +38,7 @@ export const getEmbedFormattedUrl = (userInputUrl: string) => {
 
 const EmbedElement = (props: PlateRenderElementProps) => {
   const { attributes, children, element } = props;
+  const { type } = (element as any).additionalProps;
   const editor = usePlateEditorRef()!;
 
   const [url, setUrl] = useState("");
@@ -46,7 +47,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
 
   const handleEmbedUrlInput: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    const currentPath = findNodePath(editor, props.element)!;
+    const currentPath = findNodePath(editor, element)!;
     // insert embeded node
     insertNodes(
       editor,
@@ -71,7 +72,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       {children}
       <FormHeader>
         <div>
-          <h2>Embed Design</h2>
+          <h2>Embed {type === "design" ? "Design" : "Video"}</h2>
           <p>Paste link to embed design from Figma</p>
         </div>
         <CloseButton
