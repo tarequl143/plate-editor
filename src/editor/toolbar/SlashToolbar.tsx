@@ -61,6 +61,7 @@ const SlashToolbar = (props: SlashToolbarProps) => {
                   key={index}
                   type={element.type}
                   icon={element.icon}
+                  additionalProps={element.additionalProps}
                 />
               );
             }

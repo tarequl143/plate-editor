@@ -1,9 +1,9 @@
 import {
-  ArrowSquareDownLeft,
   At,
   BracketsCurly,
   CheckSquareOffset,
   Equals,
+  FigmaLogo,
   GridFour,
   Image,
   ListBullets,
@@ -15,6 +15,7 @@ import {
   TextHThree,
   TextHTwo,
   WarningCircle,
+  YoutubeLogo,
 } from "phosphor-react";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
@@ -39,6 +40,7 @@ export type ToolbarElement = {
   type: string;
   icon?: React.ReactNode;
   as?: string;
+  additionalProps?: any;
 };
 
 export const SlashToolbarElements: ToolbarElement[] = [
@@ -187,13 +189,30 @@ export const SlashToolbarElements: ToolbarElement[] = [
     icon: (
       <>
         <span className="icon">
-          <ArrowSquareDownLeft size={24} weight="duotone" />
+          <FigmaLogo size={24} weight="duotone" />
         </span>
         <span className="title">Embed</span>
       </>
     ),
+    additionalProps: {
+      type: "design",
+    },
   },
-
+  {
+    title: "Embed",
+    type: CUSTOM_ELEMENT_EMBED,
+    icon: (
+      <>
+        <span className="icon">
+          <YoutubeLogo size={24} weight="duotone" />
+        </span>
+        <span className="title">Embed</span>
+      </>
+    ),
+    additionalProps: {
+      type: "video",
+    },
+  },
   {
     title: "Hint",
     type: CUSTOM_ELEMENT_HINT,

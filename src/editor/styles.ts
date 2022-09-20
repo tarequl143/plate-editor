@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const PageWrapper = styled.div`
   position: relative;
-  padding-left: 200px;
 `;
 
 export const EditorWrapper = styled.div`
