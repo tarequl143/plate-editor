@@ -4,6 +4,11 @@
   "private": true,
   "dependencies": {
     "@excalidraw/excalidraw": "^0.12.0",
+    "@getonnet/tixio-ui-core": "^5.2.0",
+    "@getonnet/tixio-ui-form": "^5.2.0",
+    "@getonnet/tixio-ui-hooks": "^5.2.0",
+    "@getonnet/tixio-ui-modals": "^5.2.0",
+    "@getonnet/tixio-ui-notifications": "^5.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,6 +19,7 @@
     "@udecode/plate": "^16.4.1",
     "@udecode/plate-code-block": "^16.8.0",
     "@udecode/plate-table": "^16.8.0",
+    "axios": "^0.27.2",
     "nanoid": "^4.0.0",
     "phosphor-react": "^1.4.1",
     "pipe-functions": "^1.3.0",
@@ -21,6 +27,7 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
+    "react-dropzone": "^11.3.2",
     "react-scripts": "5.0.1",
     "slate": "^0.82.1",
     "slate-history": "^0.66.0",
@@ -28,12 +35,7 @@
     "slate-react": "^0.82.1",
     "styled-components": "^5.3.5",
     "typescript": "^4.7.4",
-    "web-vitals": "^2.1.4",
-    "@getonnet/tixio-ui-core": "^5.2.0",
-    "@getonnet/tixio-ui-form": "^5.2.0",
-    "@getonnet/tixio-ui-hooks": "^5.2.0",
-    "@getonnet/tixio-ui-modals": "^5.2.0",
-    "@getonnet/tixio-ui-notifications": "^5.2.0"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

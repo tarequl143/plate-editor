@@ -38,12 +38,10 @@ export const getEmbedFormattedUrl = (userInputUrl: string) => {
 
 const EmbedElement = (props: PlateRenderElementProps) => {
   const { attributes, children, element } = props;
-  const { type } = (element as any).additionalProps;
-  const editor = usePlateEditorRef()!;
-
   const [url, setUrl] = useState("");
 
-  const nodePath = findNodePath(editor, props.element)!;
+  const { type } = (element as any).additionalProps;
+  const editor = usePlateEditorRef()!;
 
   const handleEmbedUrlInput: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
