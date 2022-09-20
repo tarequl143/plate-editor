@@ -11,6 +11,7 @@ const ImageElement = (props: PlateRenderElementProps) => {
       focused={selected && focused}
       contentEditable={false}
       suppressContentEditableWarning
+      className="image-element"
     >
       {props.children}
       <Img src={(props.element.url as string) || ""} />

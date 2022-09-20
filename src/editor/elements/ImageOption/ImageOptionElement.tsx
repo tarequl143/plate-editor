@@ -1,28 +1,42 @@
+import { ActionIcon, Text } from "@getonnet/tixio-ui-core";
 import {
+  ELEMENT_PARAGRAPH,
   findNodePath,
   focusEditor,
+  getLastNode,
+  getNode,
   insertNodes,
+  isLastChild,
   PlateRenderElementProps,
   removeNodes,
   usePlateEditorRef,
 } from "@udecode/plate";
+import { DotsThreeOutline, ImageSquare } from "phosphor-react";
 import { useState } from "react";
 import { Path } from "slate";
+import { useFocused, useSelected } from "slate-react";
 import { CUSTOM_ELEMENT_H1 } from "../Headings/types";
 import { CUSTOM_ELEMENT_IMAGE } from "../Image/types";
-import { ImageLinkInput, ImageWrapper } from "./ImageOptionStyle";
+import {
+  ContentWrapper,
+  ImageWrapper,
+  LeftContentWrapper,
+} from "./ImageOptionStyle";
+import ImageOptionModal from "./modal/ImageOptionModal";
 
 const ImageOptionElement = (props: PlateRenderElementProps) => {
-  // image url input state
-  const [url, setUrl] = useState("");
+  const [showAddImageModal, setshowAddImageModal] = useState(false);
   // Get Editor Ref
   const editor = usePlateEditorRef()!;
+  const focused = useFocused();
+  const selected = useSelected();
 
-  const addImageElement: React.FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    const parentNodepath = findNodePath(editor, props.element)!;
+  const insertImageNode = (url: string) => {
+    if (!editor) return;
+    const currentPath = findNodePath(editor, props.element);
+    const nextChild = getNode(editor, Path.next(currentPath!));
 
-    removeNodes(editor, { at: parentNodepath, hanging: false });
+    removeNodes(editor, { at: currentPath });
     insertNodes(
       editor,
       [
@@ -31,26 +45,46 @@ const ImageOptionElement = (props: PlateRenderElementProps) => {
           children: [],
           url: url,
         },
-        // insert a empty node below image
+      ],
+      { at: currentPath }
+    );
+    //* if there is not child after the image element
+    //* insert an empty paragraph after the image
+    if (nextChild === null) {
+      insertNodes(
+        editor,
+
         {
-          type: CUSTOM_ELEMENT_H1,
+          type: ELEMENT_PARAGRAPH,
           children: [],
         },
-      ],
-      { at: parentNodepath },
-    );
-
-    focusEditor(editor, Path.next(parentNodepath));
+        { at: Path.next(currentPath!), hanging: true }
+      );
+      focusEditor(editor, Path.next(currentPath!));
+    }
   };
 
   return (
-    <ImageWrapper onSubmit={addImageElement} contentEditable={false}>
+    <ImageWrapper contentEditable={false} focused={focused && selected}>
       {props.children}
-      <ImageLinkInput
-        placeholder="Image url"
-        onChange={(e) => setUrl(e.target.value)}
+      <ContentWrapper>
+        <LeftContentWrapper>
+          <ImageSquare size={32} />
+          <Text color="#374151">Add Image</Text>
+        </LeftContentWrapper>
+        <DotsThreeOutline
+          size={24}
+          color="#6B7280"
+          cursor="pointer"
+          onClick={() => setshowAddImageModal(true)}
+        />
+      </ContentWrapper>
+      {/* image option modal */}
+      <ImageOptionModal
+        opened={showAddImageModal}
+        onCLose={() => setshowAddImageModal(false)}
+        insertImage={insertImageNode}
       />
-      <button type="submit">upload</button>
     </ImageWrapper>
   );
 };
