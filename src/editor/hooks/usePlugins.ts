@@ -6,6 +6,7 @@ import {
   createItalicPlugin,
   createLinkPlugin,
   createMentionPlugin,
+  createParagraphPlugin,
   createPlateUI,
   createPlugins,
   createResetNodePlugin,
@@ -17,6 +18,7 @@ import {
   createTablePlugin,
   createUnderlinePlugin,
   ELEMENT_TABLE,
+  ELEMENT_PARAGRAPH,
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
@@ -34,6 +36,7 @@ import { linkPlugin } from "../elements/Link/linkPlugin";
 import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
 import { createOrderedListPlugin } from "../elements/OrderedList/createOrderedListPlugin";
+import ParagraphElement from "../elements/Paragraph/ParagraphElement";
 import { createSeparatorPlugin } from "../elements/Separator/createSeparatorPlugin";
 import { createSketchPlugin } from "../elements/Sketch/createSketchPlugin";
 import { createSpacerPlugin } from "../elements/Spacer/createSpacerPlugin";
@@ -45,6 +48,7 @@ import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 
 export const plateUI = createPlateUI({
   [ELEMENT_TABLE]: TableElement,
+  [ELEMENT_PARAGRAPH]: ParagraphElement,
 });
 
 export const usePlugins = () => {
@@ -53,6 +57,10 @@ export const usePlugins = () => {
       [
         ...createHeadingPlugin,
         createBoldPlugin(),
+        createParagraphPlugin({
+          key: ELEMENT_PARAGRAPH,
+          // component: ParagraphElement,
+        }),
         createItalicPlugin(),
         createHighlightPlugin(),
         createUnderlinePlugin(),
@@ -92,7 +100,7 @@ export const usePlugins = () => {
       ],
       {
         components: plateUI,
-      },
+      }
     );
     return allPlugins;
   }, []);

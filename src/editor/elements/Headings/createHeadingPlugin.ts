@@ -4,14 +4,12 @@ import {
   CUSTOM_ELEMENT_H1,
   CUSTOM_ELEMENT_H2,
   CUSTOM_ELEMENT_H3,
-  CUSTOM_ELEMENT_H4,
 } from "./types";
 
 export const headingElementKeys = [
   CUSTOM_ELEMENT_H1,
   CUSTOM_ELEMENT_H2,
   CUSTOM_ELEMENT_H3,
-  CUSTOM_ELEMENT_H4,
 ] as const;
 
 // array of heading plugins
@@ -24,5 +22,5 @@ export const createHeadingPlugin = headingElementKeys.map((KEY) =>
     handlers: {
       onKeyDown: onKeyDownToggleElement,
     },
-  })(),
+  })()
 );

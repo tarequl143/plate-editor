@@ -1,6 +1,9 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CustomElemParagraph = styled.p`
-  margin: 0;
-  line-height: 26px;
+  font-size: 16px;
+  color: #374151;
+  font-weight: 400;
+  margin-bottom: 8px;
+  line-height: 26.24px;
 `;
