@@ -39,7 +39,6 @@ export type ToolbarElement = {
   type: string;
   icon?: React.ReactNode;
   as?: string;
-  mouseDown?: (editor: any, props: any) => void;
 };
 
 export const SlashToolbarElements: ToolbarElement[] = [
@@ -54,7 +53,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Heading 1</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Heading 2",
@@ -67,7 +65,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Heading 2</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Heading 3",
@@ -80,7 +77,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Heading 3</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Image",
@@ -93,7 +89,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Image</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Bullet List",
@@ -106,7 +101,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Bullet List</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Numbered List",
@@ -119,7 +113,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Numbered List</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Table",
@@ -132,7 +125,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Table</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Checklist",
@@ -145,7 +137,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Checklist</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Mention",
@@ -158,14 +149,13 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Mention</span>
       </>
     ),
-    as: "div",
-    mouseDown: (editor: any, props: any) => {
-      if (editor) {
-        editor.deleteBackward("character");
-        props.removeSlashToolbar();
-        editor.insertText("@");
-      }
-    },
+    // mouseDown: (editor: any, props: any) => {
+    //   if (editor) {
+    //     editor.deleteBackward("character");
+    //     props.removeSlashToolbar();
+    //     editor.insertText("@");
+    //   }
+    // },
   },
   {
     title: "Sketch",
@@ -178,7 +168,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Sketch</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Code Snippet",
@@ -191,7 +180,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Code Snippet</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Embed",
@@ -204,7 +192,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Embed</span>
       </>
     ),
-    as: "div",
   },
 
   {
@@ -218,7 +205,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Hint</span>
       </>
     ),
-    as: "div",
   },
 
   {
@@ -232,7 +218,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Seperator</span>
       </>
     ),
-    as: "div",
   },
   {
     title: "Blockquote",
@@ -245,7 +230,6 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Quote</span>
       </>
     ),
-    as: "div",
   },
   //   {
   //     title: "Well",
@@ -258,7 +242,7 @@ export const SlashToolbarElements: ToolbarElement[] = [
   //         <span className="title">Well</span>
   //       </>
   //     ),
-  //     as: "div",
+  //
   //   },
   {
     title: "Empty Space",
@@ -271,6 +255,5 @@ export const SlashToolbarElements: ToolbarElement[] = [
         <span className="title">Empty Space</span>
       </>
     ),
-    as: "div",
   },
 ];

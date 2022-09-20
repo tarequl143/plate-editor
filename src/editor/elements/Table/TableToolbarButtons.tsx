@@ -7,24 +7,17 @@ import {
   insertTableRow,
   TableToolbarButton,
 } from "@udecode/plate";
-import { Airplane, Columns, Rows, Table } from "phosphor-react";
-import React from "react";
+import { Airplane, Columns, Rows } from "phosphor-react";
 import { ToolbarButtonWrapper } from "./TableStyle";
 
 type Props = {
   showAddTableOnly?: boolean;
+  icon?: React.ReactNode;
 };
 
 const TableToolbarButtons = (props: Props) => {
   if (props.showAddTableOnly) {
-    return (
-      <ToolbarButtonWrapper>
-        <TableToolbarButton
-          icon={<Table size={32} />}
-          transform={insertTable}
-        />
-      </ToolbarButtonWrapper>
-    );
+    return <TableToolbarButton icon={props.icon} transform={insertTable} />;
   }
 
   return (

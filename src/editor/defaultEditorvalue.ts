@@ -24,14 +24,6 @@ export const defaultValue = [
     ],
   },
   {
-    type: "custom_elem_H4",
-    children: [
-      {
-        text: "h4h4h4h4h",
-      },
-    ],
-  },
-  {
     type: "p",
     children: [
       {

@@ -67,16 +67,40 @@ export const SlashToolbarContent = styled.div`
   z-index: 9;
   margin: 0;
   vertical-align: middle;
-  padding: 4px;
-  span {
+  padding: 12px 16px;
+  .slate-ToolbarButton {
     position: relative;
     width: 25%;
-    padding: 8px 8px 8px 44px;
+    padding: 8px 8px 8px 40px;
     -webkit-box-pack: start;
     -webkit-justify-content: flex-start;
     -ms-flex-pack: start;
     justify-content: flex-start;
     box-sizing: border-box;
-    height: 44px;
+    height: auto;
+    border-radius: 4px;
+    &:hover {
+      background-color: rgba(75, 78, 252, 0.1);
+      color: #4b4efc;
+      .title {
+        color: #4b4efc;
+      }
+    }
+    .icon {
+      position: absolute;
+      left: 8px;
+      width: 24px;
+      height: 24px;
+      svg {
+        width: auto;
+        height: auto;
+      }
+    }
+    .title {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      color: #374151;
+    }
   }
 `;

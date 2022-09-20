@@ -48,15 +48,19 @@ const SlashToolbar = (props: SlashToolbarProps) => {
         <SlashToolbarContent>
           {filteredToolbarElements.map((element, index) => {
             if (element.type === "TABLE") {
-              return <TableToolbarButtons showAddTableOnly key={index} />;
+              return (
+                <TableToolbarButtons
+                  showAddTableOnly
+                  key={index}
+                  icon={element.icon}
+                />
+              );
             } else {
               return (
                 <CustomToolbarButton
                   key={index}
                   type={element.type}
                   icon={element.icon}
-                  as={element.as}
-                  onMouseDown={element.mouseDown as any}
                 />
               );
             }
