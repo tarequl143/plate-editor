@@ -1,9 +1,8 @@
-import { usePlateEditorRef } from "@udecode/plate";
+import { PlateRenderElementProps, usePlateEditorRef } from "@udecode/plate";
 import { CustomElemParagraph } from "./ParagraphStyle";
 
-const ParagraphElement = (props: any) => {
+const ParagraphElement = (props: PlateRenderElementProps) => {
   const { attributes, children } = props;
-
   const editor = usePlateEditorRef()!;
 
   return (

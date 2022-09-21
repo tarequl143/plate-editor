@@ -1,18 +1,35 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { HeadingType } from "./HeadingElement";
 
-const fontSizes = {
-  h1: "36px",
-  h2: "32px",
-  h3: "28px",
-  h4: "24px",
-};
-type FontSize = keyof typeof fontSizes;
-
-export const Heading = styled.h1<{ type: string }>`
-  font-size: ${(props) =>
-    fontSizes[props.type as FontSize] ||
-    "36px"}; // return size depending on the element type
+export const Heading = styled.h1<{ type: HeadingType }>`
   color: #000000;
-  margin: 10px 0 20px 0;
+  margin-bottom: 16px;
   line-height: 1;
+  ${(props) => {
+    switch (props.type) {
+      case "h1": {
+        return css`
+          font-weight: 34px;
+          font-weight: 800;
+          line-height: 51.68px;
+        `;
+      }
+      case "h2": {
+        return css`
+          font-weight: 26px;
+          font-weight: 600;
+          line-height: 39.52px;
+        `;
+      }
+      case "h3": {
+        return css`
+          font-weight: 20px;
+          font-weight: 600;
+          line-height: 30px;
+        `;
+      }
+      default:
+        return "";
+    }
+  }}
 `;

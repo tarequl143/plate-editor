@@ -5,11 +5,12 @@ import { headingElementKeys } from "./createHeadingPlugin";
 import { Heading } from "./HeadingStyles";
 
 type Elements = typeof headingElementKeys[number];
-export const headingType: Record<Elements, string> = {
+export type HeadingType = "h1" | "h2" | "h3";
+
+export const headingType: Record<Elements, HeadingType> = {
   custom_elem_h1: "h1",
   custom_elem_H2: "h2",
   custom_elem_H3: "h3",
-  custom_elem_H4: "h4",
 };
 
 const HeadingElement = (props: RenderElementProps) => {
