@@ -9,7 +9,7 @@ export const ImageWrapper = styled.div<{ focused: boolean }>`
   justify-items: center;
   align-items: center;
   border-width: ${(props) => (props.focused ? "2px" : "0px")};
-  border-color: #f58967;
+  border-color: #4b4efc;
   border-style: dashed;
 `;
 

@@ -7,7 +7,7 @@ export const EmbedWrapper = styled.div<{ focused: boolean }>`
   box-shadow: 0px 8px 10px -6px rgba(16, 24, 40, 0.1),
     0px 20px 25px -2px rgba(16, 24, 40, 0.1);
   margin-bottom: 16px;
-  border: ${(props) => (props.focused ? "1px dashed #f58967" : "none")};
+  border: ${(props) => (props.focused ? "1px dashed #4B4EFC" : "none")};
 `;
 
 export const FormHeader = styled.div`

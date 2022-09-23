@@ -25,6 +25,7 @@ import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquoteP
 import { createBulletedListPlugin } from "../elements/BulletedList/createBulletedListPlugin";
 import { createCodeBlockPlugin } from "../elements/CodeBlock/createCodeblockPlugin";
 import { createEmbedPlugin } from "../elements/Embed/createEmbedPlugin";
+import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
 import { createEmbedDataPlugin } from "../elements/EmbedData/createEmbedDataPlugin";
 import { createHeadingPlugin } from "../elements/Headings/createHeadingPlugin";
 import { createHintPlugin } from "../elements/Hint/createHintPlugin";
@@ -87,7 +88,11 @@ export const usePlugins = () => {
         createSelectOnBackspacePlugin({
           options: {
             query: {
-              allow: [CUSTOM_ELEMENT_IMAGE, CUSTOM_ELEMENT_IMAGE_OPTION],
+              allow: [
+                CUSTOM_ELEMENT_IMAGE,
+                CUSTOM_ELEMENT_IMAGE_OPTION,
+                CUSTOM_ELEMENT_EMBED,
+              ],
             },
           },
         }),

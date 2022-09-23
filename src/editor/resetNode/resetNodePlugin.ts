@@ -13,6 +13,8 @@ import { Path } from "slate";
 import { CUSTOM_ELEMENT_BLOCKQUOTE } from "../elements/Blockquote/types";
 import { CUSTOM_ELEMENT_BULLETED_LIST } from "../elements/BulletedList/types";
 import { CUSTOM_ELEMENT_CODE_BLOCK } from "../elements/CodeBlock/types";
+import { CUSTOM_ELEMENT_EMBED } from "../elements/Embed/types";
+import { CUSTOM_ELEMENT_EMBED_DATA } from "../elements/EmbedData/types";
 import { CUSTOM_ELEMENT_HINT } from "../elements/Hint/types";
 import { CUSTOM_ELEMENT_IMAGE } from "../elements/Image/types";
 import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
@@ -39,6 +41,8 @@ export const SEPARATOR_AND_SPACER = [
 export const VOID_ELEMENTS = [
   CUSTOM_ELEMENT_IMAGE,
   CUSTOM_ELEMENT_IMAGE_OPTION,
+  CUSTOM_ELEMENT_EMBED,
+  CUSTOM_ELEMENT_EMBED_DATA,
   ...SEPARATOR_AND_SPACER,
 ];
 
@@ -88,7 +92,7 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
               {
                 at: Path.next(nodePath as Path),
                 select: true,
-              }
+              },
             );
           }
         },
@@ -119,7 +123,7 @@ export const resetNodePlugin: Partial<PlatePlugin<ResetNodePlugin>> = {
             {
               at: Path.next(nodePath as Path),
               select: true,
-            }
+            },
           );
         },
       },

@@ -59,7 +59,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       },
       {
         at: Path.next(currentPath),
-      }
+      },
     );
     // remove embed input node
     removeNodes(editor, {
@@ -71,6 +71,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
     <EmbedWrapper
       {...attributes}
       contentEditable={false}
+      suppressContentEditableWarning
       className={`embed-element ${selected && focused ? "selected" : ""}`}
       focused={focused && selected}
     >

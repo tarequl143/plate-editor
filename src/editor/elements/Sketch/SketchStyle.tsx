@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ElementWrapper = styled.div<{ isSelected: boolean }>`
   position: relative;
   border: ${(props) =>
-    props.isSelected ? "2px dashed #f58967" : "1px dashed #d8dadf"};
+    props.isSelected ? "2px dashed #4B4EFC" : "1px dashed #d8dadf"};
   padding: 15px;
   color: #666666;
   font-size: 15px;
