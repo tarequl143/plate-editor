@@ -9,8 +9,6 @@ export const ToolbarButtonWrapper = styled.div`
 `;
 
 export const StyledTable = styled(TableElement)`
-  background: red;
-
   td {
     border: 1px solid rgba(209, 213, 219, 1);
   }
