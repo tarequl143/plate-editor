@@ -165,7 +165,7 @@ export const defaultValue = [
         text: "m1 pro",
       },
     ],
-    checked: false,
+    checked: true,
   },
   {
     type: "custom_elem_todo_list",

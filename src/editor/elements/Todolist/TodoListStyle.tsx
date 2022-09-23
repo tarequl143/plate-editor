@@ -63,5 +63,14 @@ export const CheckboxWrapper = styled.span`
   display: inline-block;
   left: 0;
   top: 3px;
-  color: red;
+  color: #d1d5db;
+  svg {
+    position: absolute;
+    left: 0;
+    top: calc(50% - 1px);
+    transform: translateY(-50%);
+  }
+  .checked {
+    color: #4b4efc;
+  }
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const ElementWrapper = styled.div`
   position: relative;
   margin-bottom: 16px;
-  padding: 5px 20px 5px 16px;
+  padding: 0 20px 0 16px;
   color: #374151;
   font-weight: 700;
   font-size: 16px;

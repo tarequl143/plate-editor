@@ -1,6 +1,7 @@
 import { findNodePath, setNodes, usePlateEditorRef } from "@udecode/plate";
+import { CheckSquare, Square } from "phosphor-react";
 import { useReadOnly } from "slate-react";
-import { Checkbox, CheckboxWrapper, ElementWrapper } from "./TodoListStyle";
+import { CheckboxWrapper, ElementWrapper } from "./TodoListStyle";
 
 const TodoListElement = (props: any) => {
   const editor = usePlateEditorRef()!;
@@ -25,7 +26,11 @@ const TodoListElement = (props: any) => {
             setNodes(editor, newProperties, { at: path });
           }}
         />
-        <Checkbox />
+        {element.checked ? (
+          <CheckSquare className="checked" size={24} weight="fill" />
+        ) : (
+          <Square size={24} />
+        )}
       </CheckboxWrapper>
       <span contentEditable={!readOnly} suppressContentEditableWarning>
         {children}
