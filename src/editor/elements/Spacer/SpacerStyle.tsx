@@ -1,5 +1,6 @@
-import styled, { css } from "styled-components";
 import { Copy, Trash } from "phosphor-react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 export const SpacerWrapper = styled.div<{ focused: boolean }>`
   height: 32px;

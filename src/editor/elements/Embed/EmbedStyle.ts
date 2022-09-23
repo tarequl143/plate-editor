@@ -6,7 +6,7 @@ export const EmbedWrapper = styled.div`
   border-radius: 8px;
   box-shadow: 0px 8px 10px -6px rgba(16, 24, 40, 0.1),
     0px 20px 25px -2px rgba(16, 24, 40, 0.1);
-  margin: 16px 0px;
+  margin-bottom: 16px;
 `;
 
 export const FormHeader = styled.div`

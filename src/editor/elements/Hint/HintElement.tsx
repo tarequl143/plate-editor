@@ -1,11 +1,10 @@
-import { usePlateEditorRef } from "@udecode/plate";
 import { nanoid } from "nanoid";
+import { WarningCircle } from "phosphor-react";
 import { RenderElementProps, useFocused, useSelected } from "slate-react";
 import { ElementWrapper, HintIcon } from "./HintStyle";
 
 const HintElement = (props: RenderElementProps) => {
-  const editor = usePlateEditorRef()!;
-  const { attributes, children, element } = props;
+  const { attributes, children } = props;
   const selected = useSelected();
   const focused = useFocused();
   const id = nanoid();
@@ -16,7 +15,7 @@ const HintElement = (props: RenderElementProps) => {
       className={`hint-element ${selected && focused ? "selected" : ""}`}
     >
       <HintIcon contentEditable={false} suppressContentEditableWarning>
-        (!)
+        <WarningCircle size={18} color="#F59E0B" />
       </HintIcon>
       {children}
     </ElementWrapper>

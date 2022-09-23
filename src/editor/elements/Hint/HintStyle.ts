@@ -2,13 +2,15 @@ import styled from "styled-components";
 
 export const ElementWrapper = styled.div`
   position: relative;
-  padding: 12px 15px 12px 36px;
-  background-color: rgba(245, 137, 103, 0.1);
+  padding: 16px 15px 16px 44px;
+  background-color: #fffbeb;
   color: #666666;
-  font-size: 15px;
-  margin: 8px 0;
+  font-size: 16px;
+  margin-bottom: 16px;
   display: block;
   border-radius: 3px;
+  line-height: 26.24px;
+  font-weight: 500;
   &:before {
     position: absolute;
     content: "";
@@ -16,7 +18,7 @@ export const ElementWrapper = styled.div`
     top: 0;
     width: 4px;
     height: 100%;
-    background-color: #f58967;
+    background-color: #f59e0b;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
   }
@@ -28,10 +30,10 @@ export const ElementWrapper = styled.div`
 
 export const HintIcon = styled.span`
   position: absolute;
-  left: 10px;
+  left: 20px;
   top: 16px;
   font-size: 18px;
   color: #f58967;
   display: inline-block;
-  line-height: 1;
+  line-height: 30px;
 `;

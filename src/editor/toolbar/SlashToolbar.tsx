@@ -24,14 +24,11 @@ const SlashToolbar = (props: SlashToolbarProps) => {
   const filteredToolbarElements = useMemo(() => {
     return searchTerm
       ? SlashToolbarElements.filter((element) =>
-          element.title.toLowerCase().includes(searchTerm.toLowerCase()),
+          element.title.toLowerCase().includes(searchTerm.toLowerCase())
         )
       : SlashToolbarElements;
   }, [searchTerm]);
   // const filterToolbar = filteredToolbarElements();
-
-  // console.log("Search Term", searchTerm);
-  console.log(filteredToolbarElements);
 
   // Baloon Toolbar Toggle
   useEffect(() => {

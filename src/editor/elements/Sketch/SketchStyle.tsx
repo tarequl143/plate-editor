@@ -7,7 +7,7 @@ export const ElementWrapper = styled.div<{ isSelected: boolean }>`
   padding: 15px;
   color: #666666;
   font-size: 15px;
-  margin: 8px 0;
+  margin-bottom: 16px;
   display: flex;
   border-radius: 3px;
   min-height: 180px;
