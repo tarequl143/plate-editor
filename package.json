@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/styled": "^11.10.4",
     "@excalidraw/excalidraw": "^0.12.0",
     "@getonnet/tixio-ui-core": "^5.2.0",
     "@getonnet/tixio-ui-form": "^5.2.0",

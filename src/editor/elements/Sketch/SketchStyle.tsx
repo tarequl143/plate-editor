@@ -22,6 +22,7 @@ export const ElementWrapper = styled.div<{ isSelected: boolean }>`
 export const SketchHelpContent = styled.div`
   display: inline-block;
   text-align: center;
+  user-select: none;
 `;
 export const SketchContent = styled.p`
   text-align: center;
@@ -30,6 +31,7 @@ export const SketchContent = styled.p`
   color: #acb1b9;
   line-height: 22px;
   margin: 0;
+  user-select: none;
 `;
 
 export const SvgWrapper = styled.div`

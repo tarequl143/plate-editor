@@ -1,4 +1,5 @@
 import { getAboveNode, usePlateEditorRef } from "@udecode/plate";
+import { Trash, X } from "phosphor-react";
 import { useState } from "react";
 import { useFocused, useSelected } from "slate-react";
 import { ExcalidrawSketch } from "../../Excalidraw/ExcalidrawSketch";
@@ -22,6 +23,15 @@ const SketchElement = (props: any) => {
 
   const currentNode = getAboveNode(editor);
 
+  const handleDoubleClick: React.MouseEventHandler<HTMLDivElement> = (
+    event
+  ) => {
+    if (event.detail > 1) {
+      event.preventDefault();
+      setSketching(true);
+    }
+  };
+
   return (
     <>
       {children}
@@ -29,17 +39,16 @@ const SketchElement = (props: any) => {
         {...attributes}
         className={`sketch-element ${selected && focused ? "selected" : ""}`}
         isSelected={!!(selected && focused)}
-        onDoubleClick={() => setSketching(true)}
+        onMouseDown={handleDoubleClick}
       >
         {selected && focused && (
           <SketchElementActions>
-            <ActionBtn>?</ActionBtn>
             <ActionBtn
               onMouseDown={(event) => {
                 removeElement(event, editor, element);
               }}
             >
-              Del
+              <Trash size={18} />
             </ActionBtn>
           </SketchElementActions>
         )}

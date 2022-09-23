@@ -2,17 +2,18 @@ import { Excalidraw, exportToBlob, exportToSvg } from "@excalidraw/excalidraw";
 import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
 import { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types/types";
 
+import { ActionIcon, Button } from "@getonnet/tixio-ui-core";
 import { insertNodes, removeNodes, TElement } from "@udecode/plate";
 import { useMemo, useRef, useState } from "react";
 import { CUSTOM_ELEMENT_SKETCH } from "../elements/Sketch/types";
 import {
-  ButtonTooltip,
   ExcalidrawActionBar,
-  ExcalidrawActionBarItem,
   ExcalidrawModalContent,
   ExcalidrawModalOverlay,
   ExcalidrawModalWrapper,
 } from "./ExcalidrawSketchStyles";
+
+import { DownloadSimple, PlusCircle, X } from "phosphor-react";
 import { InitialData } from "./InitialData";
 
 export const ExcalidrawSketch = (props: any) => {
@@ -80,7 +81,9 @@ export const ExcalidrawSketch = (props: any) => {
           }}
         />
         <ExcalidrawActionBar>
-          <ExcalidrawActionBarItem
+          <Button
+            leftIcon={<DownloadSimple size={20} />}
+            variant="light"
             onClick={async () => {
               const svg = await exportToBlob({
                 elements: excalidrawRef?.current?.getSceneElements() as any,
@@ -91,8 +94,8 @@ export const ExcalidrawSketch = (props: any) => {
                 files: excalidrawRef?.current?.getFiles() as any,
               });
               if (!svg) return;
-              var url = URL.createObjectURL(svg);
-              var download = document.createElement("a");
+              let url = URL.createObjectURL(svg);
+              let download = document.createElement("a");
               download.href = url;
               download.download = "export.png";
               download.click();
@@ -100,9 +103,9 @@ export const ExcalidrawSketch = (props: any) => {
             }}
           >
             Download
-            <ButtonTooltip>Downlaod as image</ButtonTooltip>
-          </ExcalidrawActionBarItem>
-          <ExcalidrawActionBarItem
+          </Button>
+          <Button
+            leftIcon={<PlusCircle size={20} />}
             onClick={async () => {
               const svg = await exportToSvg({
                 elements: excalidrawRef?.current?.getSceneElements() as any,
@@ -120,9 +123,11 @@ export const ExcalidrawSketch = (props: any) => {
               }
             }}
           >
-            Save
-            <ButtonTooltip>Save and back to the doc</ButtonTooltip>
-          </ExcalidrawActionBarItem>
+            Add to Wiki
+          </Button>
+          <ActionIcon onClick={() => setSketching(false)}>
+            <X size={16} color="#6B7280" />
+          </ActionIcon>
         </ExcalidrawActionBar>
       </ExcalidrawModalContent>
     </ExcalidrawModalWrapper>

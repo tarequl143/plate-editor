@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Checkbox = styled.span`
   display: inline-block;
@@ -13,7 +13,7 @@ export const Checkbox = styled.span`
   box-sizing: content-box;
   &:after {
     position: absolute;
-    content: '';
+    content: "";
     left: 3px;
     top: 0px;
     width: 6px;
@@ -29,7 +29,11 @@ export const ElementWrapper = styled.div`
   margin: 0;
   position: relative;
   padding: 0 0 0 30px;
-  input[type='checkbox'] {
+  color: #1f2937;
+  line-height: 21.56px;
+  font-size: 14px;
+  margin-bottom: 8px;
+  input[type="checkbox"] {
     appearance: none;
     -webkit-appearance: none;
     width: 100%;
@@ -37,14 +41,15 @@ export const ElementWrapper = styled.div`
     margin: 0;
     position: relative;
     z-index: 1;
+    border-color: #d1d5db;
     cursor: pointer;
     &:focus {
       outline: none;
     }
   }
-  input[type='checkbox']:checked + ${Checkbox} {
-    border-color: #f58967;
-    background-color: #f58967;
+  input[type="checkbox"]:checked + ${Checkbox} {
+    border-color: #4b4efc;
+    background-color: #4b4efc;
     &:after {
       opacity: 1;
     }
@@ -58,4 +63,5 @@ export const CheckboxWrapper = styled.span`
   display: inline-block;
   left: 0;
   top: 3px;
+  color: red;
 `;
