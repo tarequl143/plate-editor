@@ -28,10 +28,6 @@ const SlashToolbar = (props: SlashToolbarProps) => {
         )
       : SlashToolbarElements;
   }, [searchTerm]);
-  // const filterToolbar = filteredToolbarElements();
-
-  // console.log("Search Term", searchTerm);
-  console.log(filteredToolbarElements);
 
   // Baloon Toolbar Toggle
   useEffect(() => {
@@ -67,57 +63,7 @@ const SlashToolbar = (props: SlashToolbarProps) => {
             }
           })}
         </SlashToolbarContent>
-      ) : // <BlockToolbarButton
-      //   type={getPluginType(editor, CUSTOM_ELEMENT_BLOCKQUOTE)}
-      //   icon={<Quotes size={32} weight="fill" />}
-      // />
-      // <BlockToolbarButton
-      //   type={getPluginType(editor, CUSTOM_ELEMENT_HINT)}
-      //   icon={<WarningCircle size={32} weight="fill" />}
-      // />
-
-      // <ImageToolbarButton icon={<Image size={24} weight="duotone" />} />
-      // <CustomToolbarButton
-      //   type={CUSTOM_ELEMENT_BULLETED_LIST}
-      //   icon={<ListBullets size={24} />}
-      // />
-      // <CustomToolbarButton
-      //   type={CUSTOM_ELEMENT_ORDERED_LIST}
-      //   icon={<ListNumbers size={24} />}
-      // />
-      // <TableToolbarButtons showAddTableOnly />
-      // <BlockToolbarButton
-      //   icon={<Code size={24} />}
-      //   type={getPluginType(editor, CUSTOM_ELEMENT_CODE_BLOCK)}
-      // />
-      // <CustomToolbarButton
-      //   icon={<BatteryEmpty size={24} />}
-      //   type={getPluginType(editor, CUSTOM_ELEMENT_SPACER)}
-      // />
-      // <CustomToolbarButton
-      //   icon={<Minus size={24} />}
-      //   type={CUSTOM_ELEMENT_SEPERATOR}
-      // />
-      // <CustomToolbarButton
-      //   icon={<FigmaLogo size={24} />}
-      //   type={CUSTOM_ELEMENT_EMBED}
-      //   additionalProps={{
-      //     type: "design",
-      //   }}
-      // />
-      // <CustomToolbarButton
-      //   icon={<YoutubeLogo size={24} />}
-      //   type={CUSTOM_ELEMENT_EMBED}
-      //   additionalProps={{
-      //     type: "video",
-      //   }}
-      // />
-      // <CustomToolbarButton
-      //   icon={<PencilSimple size={24} />}
-      //   type={CUSTOM_ELEMENT_SKETCH}
-      // />
-
-      null}
+      ) : null}
     </SlashToolbarWrap>
   );
 };

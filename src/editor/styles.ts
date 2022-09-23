@@ -5,7 +5,7 @@ export const PageWrapper = styled.div`
 `;
 
 export const EditorWrapper = styled.div`
-  width: 600px;
+  width: 800px;
   max-width: 100%;
   margin: 60px auto 0;
   border: 1px solid #d4d4d4;

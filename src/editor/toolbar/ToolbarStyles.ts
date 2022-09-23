@@ -49,8 +49,6 @@ export const SlashToolbarWrap = styled.div`
   position: absolute;
   z-index: 10;
   width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
   opacity: 0;
   left: -2000px;
   top: -2000px;
@@ -66,6 +64,8 @@ export const SlashToolbarContent = styled.div`
   position: relative;
   z-index: 9;
   margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
   vertical-align: middle;
   padding: 12px 16px;
   .slate-ToolbarButton {

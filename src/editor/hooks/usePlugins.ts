@@ -17,8 +17,8 @@ import {
   createSuperscriptPlugin,
   createTablePlugin,
   createUnderlinePlugin,
-  ELEMENT_TABLE,
   ELEMENT_PARAGRAPH,
+  ELEMENT_TABLE,
 } from "@udecode/plate";
 import { useMemo } from "react";
 import { createBlockquotePlugin } from "../elements/Blockquote/createBlockquotePlugin";
@@ -80,7 +80,6 @@ export const usePlugins = () => {
         createImageOptionPlugin(),
         createSoftBreakPlugin(),
         createTablePlugin(),
-        // createListPlugin(),
         createBulletedListPlugin(),
         createOrderedListPlugin(),
         createListPlugin(),
@@ -100,7 +99,7 @@ export const usePlugins = () => {
       ],
       {
         components: plateUI,
-      }
+      },
     );
     return allPlugins;
   }, []);
