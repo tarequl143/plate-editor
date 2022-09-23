@@ -8,9 +8,9 @@ import { useState } from "react";
 import { Path } from "slate";
 import { useFocused, useSelected } from "slate-react";
 import {
-  SpacerWrapper,
   SpacerCloneIcon,
   SpacerDeleteIcon,
+  SpacerWrapper,
 } from "./SpacerStyle";
 import { CUSTOM_ELEMENT_SPACER } from "./types";
 
@@ -29,7 +29,7 @@ const SpacerElement = (props: PlateRenderElementProps) => {
       },
       {
         at: Path.next(currentPath),
-      }
+      },
     );
   };
 
@@ -40,19 +40,14 @@ const SpacerElement = (props: PlateRenderElementProps) => {
   return (
     <SpacerWrapper
       {...props.attributes}
-      onMouseEnter={() => setShowButtons(true)}
-      onMouseLeave={() => setShowButtons(false)}
       focused={focused && selected}
       contentEditable={false}
       className={`spacer-element ${selected && focused ? "selected" : ""}`}
     >
       {props.children}
-      {showButtons && (
-        <>
-          <SpacerCloneIcon onClick={handleCopy} />
-          <SpacerDeleteIcon onClick={handleDelete} />
-        </>
-      )}
+
+      <SpacerCloneIcon onClick={handleCopy} />
+      <SpacerDeleteIcon onClick={handleDelete} />
     </SpacerWrapper>
   );
 };
