@@ -7,8 +7,6 @@ const LinkElement = (props: any) => {
   const selected = useSelected();
   const focused = useFocused();
 
-  console.log(props);
-
   return (
     <LinkElem
       {...attributes}

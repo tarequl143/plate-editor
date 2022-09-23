@@ -4,6 +4,7 @@ import LinkElement from "./LinkElement";
 export const linkPlugin: Partial<PlatePlugin<LinkPlugin>> = {
   renderAfterEditable: PlateFloatingLink,
   component: LinkElement,
+  
 };
 
 // export const createLinkPlugin = createPluginFactory({
