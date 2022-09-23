@@ -4,8 +4,11 @@ export const ElementWrapper = styled.div`
   position: relative;
   margin-bottom: 16px;
   padding: 5px 20px 5px 16px;
-  color: #aaaaaa;
-  font-size: 15px;
+  color: #374151;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 26px;
+  /* background-color: #f5f5f5; */
   display: block;
   &:before {
     position: absolute;
@@ -14,7 +17,7 @@ export const ElementWrapper = styled.div`
     top: 0;
     width: 5px;
     height: 100%;
-    background-color: #eeeeee;
+    background-color: #4b4efc;
   }
   &:hover > div {
     opacity: 1;

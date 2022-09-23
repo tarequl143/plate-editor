@@ -1,5 +1,5 @@
 import { getAboveNode, usePlateEditorRef } from "@udecode/plate";
-import { Trash, X } from "phosphor-react";
+import { PenNib, Trash } from "phosphor-react";
 import { useState } from "react";
 import { useFocused, useSelected } from "slate-react";
 import { ExcalidrawSketch } from "../../Excalidraw/ExcalidrawSketch";
@@ -24,7 +24,7 @@ const SketchElement = (props: any) => {
   const currentNode = getAboveNode(editor);
 
   const handleDoubleClick: React.MouseEventHandler<HTMLDivElement> = (
-    event
+    event,
   ) => {
     if (event.detail > 1) {
       event.preventDefault();
@@ -56,7 +56,8 @@ const SketchElement = (props: any) => {
           <SvgWrapper dangerouslySetInnerHTML={{ __html: element.sketchSvg }} />
         ) : (
           <SketchHelpContent>
-            ?<SketchContent>Double click to start</SketchContent>
+            <PenNib size={24} weight="duotone" />
+            <SketchContent>Double click to start</SketchContent>
             <SketchContent>sketching out your thoughts</SketchContent>
           </SketchHelpContent>
         )}

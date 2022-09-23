@@ -15,7 +15,7 @@ const HintElement = (props: RenderElementProps) => {
       className={`hint-element ${selected && focused ? "selected" : ""}`}
     >
       <HintIcon contentEditable={false} suppressContentEditableWarning>
-        <WarningCircle size={18} color="#F59E0B" />
+        <WarningCircle size={24} weight="duotone" />
       </HintIcon>
       {children}
     </ElementWrapper>

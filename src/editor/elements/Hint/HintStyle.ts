@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ElementWrapper = styled.div`
   position: relative;
-  padding: 16px 15px 16px 44px;
+  padding: 16px 15px 16px 46px;
   background-color: #fffbeb;
   color: #666666;
   font-size: 16px;
@@ -30,10 +30,10 @@ export const ElementWrapper = styled.div`
 
 export const HintIcon = styled.span`
   position: absolute;
-  left: 20px;
-  top: 16px;
+  left: 16px;
+  top: 17px;
   font-size: 18px;
-  color: #f58967;
+  color: #f59e0b;
   display: inline-block;
   line-height: 30px;
 `;

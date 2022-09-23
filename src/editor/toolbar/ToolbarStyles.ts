@@ -65,6 +65,7 @@ export const SlashToolbarContent = styled.div`
   z-index: 9;
   margin: 0;
   max-height: 200px;
+  width: 100%;
   overflow-y: auto;
   vertical-align: middle;
   padding: 12px 16px;
