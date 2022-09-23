@@ -1,4 +1,4 @@
-import { Button } from "@getonnet/tixio-ui-core";
+import { Button, Text } from "@getonnet/tixio-ui-core";
 import {
   findNodePath,
   insertNodes,
@@ -72,17 +72,18 @@ const EmbedElement = (props: PlateRenderElementProps) => {
       {...attributes}
       contentEditable={false}
       className={`embed-element ${selected && focused ? "selected" : ""}`}
+      focused={focused && selected}
     >
       {children}
       <FormHeader>
         <div>
           <h2>Embed {type === "design" ? "Design" : "Video"}</h2>
-          <p>
+          <Text size="sm" color={"#6B7280"} mb={16}>
             Embed{" "}
             {type === "design"
               ? "Paste link to embed design from Figma"
               : "Paste link to embed design from Youtube"}
-          </p>
+          </Text>
         </div>
         <CloseButton
           onMouseDown={(e) => {

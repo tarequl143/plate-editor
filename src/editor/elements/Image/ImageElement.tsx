@@ -6,8 +6,6 @@ const ImageElement = (props: PlateRenderElementProps) => {
   const selected = useSelected();
   const focused = useFocused();
 
-  console.log("Image Props", props);
-
   return (
     <Imgwrapper
       {...props.attributes}
