@@ -17,6 +17,7 @@ import {
   createSuperscriptPlugin,
   createTablePlugin,
   createUnderlinePlugin,
+  ELEMENT_LINK,
   ELEMENT_PARAGRAPH,
   ELEMENT_TABLE,
 } from "@udecode/plate";
@@ -33,6 +34,7 @@ import { createImagePlugin } from "../elements/Image/createImagePlugin";
 import { CUSTOM_ELEMENT_IMAGE } from "../elements/Image/types";
 import { createImageOptionPlugin } from "../elements/ImageOption/createImageOptionPlugin";
 import { CUSTOM_ELEMENT_IMAGE_OPTION } from "../elements/ImageOption/types";
+import LinkElement from "../elements/Link/LinkElement";
 import { linkPlugin } from "../elements/Link/linkPlugin";
 import { createListPlugin } from "../elements/ListItem/createListItemPlugin";
 import { mentionPlugin } from "../elements/Mention/mentionPlugin";
@@ -50,6 +52,7 @@ import { softBreakPlugin } from "../softBreak/softBreakPlugin";
 export const plateUI = createPlateUI({
   [ELEMENT_TABLE]: TableElement,
   [ELEMENT_PARAGRAPH]: ParagraphElement,
+  [ELEMENT_LINK]: LinkElement,
 });
 
 export const usePlugins = () => {
