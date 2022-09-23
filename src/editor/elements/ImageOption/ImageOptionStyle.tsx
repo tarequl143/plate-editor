@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ImageWrapper = styled.div<{ focused: boolean }>`
-  padding: 30px 24px;
+  padding: 22px 24px;
   background: #e5e7eb;
   border-radius: 4px;
   margin: 20px 0px;
