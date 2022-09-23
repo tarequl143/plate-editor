@@ -27,7 +27,7 @@ const EditorIndex: React.FC = () => {
   // Editor object
   const editor = useMemo(
     () => createPlateEditor({ plugins: plugins }),
-    [plugins],
+    [plugins]
   );
 
   // On Editor Change
@@ -70,7 +70,7 @@ const EditorIndex: React.FC = () => {
 
       return ranges;
     },
-    [editor.selection, lastSelection],
+    [editor.selection, lastSelection]
   );
 
   // Console

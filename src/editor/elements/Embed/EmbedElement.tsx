@@ -98,6 +98,7 @@ const EmbedElement = (props: PlateRenderElementProps) => {
           size="md"
           ml="auto"
           mt={24}
+          type="submit"
           sx={{
             display: "block",
           }}

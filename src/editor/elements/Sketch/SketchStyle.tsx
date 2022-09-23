@@ -7,7 +7,7 @@ export const ElementWrapper = styled.div<{ isSelected: boolean }>`
   padding: 15px;
   color: #666666;
   font-size: 15px;
-  margin: 8px 0;
+  margin-bottom: 16px;
   display: flex;
   border-radius: 3px;
   min-height: 180px;
@@ -22,6 +22,7 @@ export const ElementWrapper = styled.div<{ isSelected: boolean }>`
 export const SketchHelpContent = styled.div`
   display: inline-block;
   text-align: center;
+  user-select: none;
 `;
 export const SketchContent = styled.p`
   text-align: center;
@@ -30,6 +31,7 @@ export const SketchContent = styled.p`
   color: #acb1b9;
   line-height: 22px;
   margin: 0;
+  user-select: none;
 `;
 
 export const SvgWrapper = styled.div`

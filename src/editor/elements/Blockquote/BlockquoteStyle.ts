@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ElementWrapper = styled.div`
   position: relative;
-  margin: 4px 0;
+  margin-bottom: 16px;
   padding: 5px 20px 5px 16px;
   color: #aaaaaa;
   font-size: 15px;

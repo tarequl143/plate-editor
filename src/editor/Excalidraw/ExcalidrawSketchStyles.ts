@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled/macro"; //! default import throws error
 
 export const ExcalidrawModalWrapper = styled.div`
   position: fixed;
@@ -43,22 +43,37 @@ export const ExcalidrawModalContent = styled.div`
     + .ToolIcon__icon,
   .active,
   .buttonList label.active {
-    background: red;
+    background: #4b4efc;
   }
   .FixedSideContainer_side_top {
     top: 10px !important;
     left: 10px !important;
     right: 10px !important;
   }
+  .excalidraw
+    .App-toolbar
+    .ToolIcon
+    .ToolIcon_type_radio:checked
+    + .ToolIcon__icon,
+  .excalidraw
+    .App-toolbar
+    .ToolIcon
+    .ToolIcon_type_checkbox:checked
+    + .ToolIcon__icon {
+    background: #4b4efc;
+    --icon-fill-color: #ffffff;
+    --keybinding-color: #ffffff;
+  }
 `;
 
 export const ExcalidrawActionBar = styled.div`
   position: absolute;
-  right: 10px;
+  right: 20px;
   top: 10px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  gap: 16px;
   z-index: 9;
 `;
 export const ButtonTooltip = styled.span`
