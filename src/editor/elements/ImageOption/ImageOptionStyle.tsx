@@ -8,8 +8,9 @@ export const ImageWrapper = styled.div<{ focused: boolean }>`
   display: flex;
   justify-items: center;
   align-items: center;
-  border-width: ${(props) => (props.focused ? "1px" : "0px")};
-  border-color: blue;
+  border-width: ${(props) => (props.focused ? "2px" : "0px")};
+  border-color: #f58967;
+  border-style: dashed;
 `;
 
 export const ContentWrapper = styled.div`

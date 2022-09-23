@@ -2,18 +2,17 @@ import { PlateRenderElementProps } from "@udecode/plate";
 import { useFocused, useSelected } from "slate-react";
 import { EmbedDataWrapper } from "./EmbedDataElementStyle";
 
-type Props = {};
-
 const EmbedDataElement = (props: PlateRenderElementProps) => {
-  const { attributes, children, element, editor } = props;
-  const focuseed = useFocused();
+  const { attributes, children, element } = props;
+  const focused = useFocused();
   const selected = useSelected();
   const embedUrl = (element.url as string) || "";
   return (
     <EmbedDataWrapper
       {...attributes}
       contentEditable={false}
-      focused={focuseed && selected}
+      focused={focused && selected}
+      className={`embed-data-element ${selected && focused ? "selected" : ""}`}
     >
       {children}
       <iframe

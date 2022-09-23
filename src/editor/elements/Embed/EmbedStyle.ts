@@ -1,12 +1,13 @@
 import { X } from "phosphor-react";
 import styled from "styled-components";
 
-export const EmbedWrapper = styled.div`
+export const EmbedWrapper = styled.div<{ focused: boolean }>`
   padding: 24px;
   border-radius: 8px;
   box-shadow: 0px 8px 10px -6px rgba(16, 24, 40, 0.1),
     0px 20px 25px -2px rgba(16, 24, 40, 0.1);
   margin-bottom: 16px;
+  border: ${(props) => (props.focused ? "1px dashed #f58967" : "none")};
 `;
 
 export const FormHeader = styled.div`

@@ -1,4 +1,4 @@
-import { Button } from "@getonnet/tixio-ui-core";
+import { Button, Text } from "@getonnet/tixio-ui-core";
 import {
   findNodePath,
   insertNodes,
@@ -8,6 +8,7 @@ import {
 } from "@udecode/plate";
 import React, { useState } from "react";
 import { Path } from "slate";
+import { useFocused, useSelected } from "slate-react";
 import { CUSTOM_ELEMENT_EMBED_DATA } from "../EmbedData/types";
 import { removeElement } from "../utils";
 import {
@@ -39,7 +40,8 @@ export const getEmbedFormattedUrl = (userInputUrl: string) => {
 const EmbedElement = (props: PlateRenderElementProps) => {
   const { attributes, children, element } = props;
   const [url, setUrl] = useState("");
-
+  const focused = useFocused();
+  const selected = useSelected();
   const { type } = (element as any).additionalProps;
   const editor = usePlateEditorRef()!;
 
@@ -66,17 +68,22 @@ const EmbedElement = (props: PlateRenderElementProps) => {
   };
 
   return (
-    <EmbedWrapper {...attributes} contentEditable={false}>
+    <EmbedWrapper
+      {...attributes}
+      contentEditable={false}
+      className={`embed-element ${selected && focused ? "selected" : ""}`}
+      focused={focused && selected}
+    >
       {children}
       <FormHeader>
         <div>
           <h2>Embed {type === "design" ? "Design" : "Video"}</h2>
-          <p>
+          <Text size="sm" color={"#6B7280"} mb={16}>
             Embed{" "}
             {type === "design"
               ? "Paste link to embed design from Figma"
               : "Paste link to embed design from Youtube"}
-          </p>
+          </Text>
         </div>
         <CloseButton
           onMouseDown={(e) => {
