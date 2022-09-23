@@ -8,7 +8,11 @@ const MentionElement = (props: any) => {
   const focused = useFocused();
 
   return (
-    <MentionElem {...attributes} isSelected={!!(selected && focused)}>
+    <MentionElem
+      {...attributes}
+      isSelected={!!(selected && focused)}
+      className={`mention-element ${selected && focused ? "selected" : ""}`}
+    >
       {children}
       <a
         href={element.value}

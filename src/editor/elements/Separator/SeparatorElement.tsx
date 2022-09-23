@@ -11,9 +11,10 @@ const SeparatorElement = (props: PlateRenderElementProps) => {
 
   return (
     <SeparatorWrapper
-      focused={isFocused}
       {...attributes}
+      focused={isFocused}
       contentEditable={false}
+      className={`separator-element ${selected && focused ? "selected" : ""}`}
     >
       {children}
       <hr />

@@ -8,6 +8,7 @@ import {
 } from "@udecode/plate";
 import React, { useState } from "react";
 import { Path } from "slate";
+import { useFocused, useSelected } from "slate-react";
 import { CUSTOM_ELEMENT_EMBED_DATA } from "../EmbedData/types";
 import { removeElement } from "../utils";
 import {
@@ -39,7 +40,8 @@ export const getEmbedFormattedUrl = (userInputUrl: string) => {
 const EmbedElement = (props: PlateRenderElementProps) => {
   const { attributes, children, element } = props;
   const [url, setUrl] = useState("");
-
+  const focused = useFocused();
+  const selected = useSelected();
   const { type } = (element as any).additionalProps;
   const editor = usePlateEditorRef()!;
 
@@ -66,7 +68,11 @@ const EmbedElement = (props: PlateRenderElementProps) => {
   };
 
   return (
-    <EmbedWrapper {...attributes} contentEditable={false}>
+    <EmbedWrapper
+      {...attributes}
+      contentEditable={false}
+      className={`embed-element ${selected && focused ? "selected" : ""}`}
+    >
       {children}
       <FormHeader>
         <div>

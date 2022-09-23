@@ -1,12 +1,10 @@
-import { ActionIcon, Text } from "@getonnet/tixio-ui-core";
+import { Text } from "@getonnet/tixio-ui-core";
 import {
   ELEMENT_PARAGRAPH,
   findNodePath,
   focusEditor,
-  getLastNode,
   getNode,
   insertNodes,
-  isLastChild,
   PlateRenderElementProps,
   removeNodes,
   usePlateEditorRef,
@@ -15,7 +13,6 @@ import { DotsThreeOutline, ImageSquare } from "phosphor-react";
 import { useState } from "react";
 import { Path } from "slate";
 import { useFocused, useSelected } from "slate-react";
-import { CUSTOM_ELEMENT_H1 } from "../Headings/types";
 import { CUSTOM_ELEMENT_IMAGE } from "../Image/types";
 import {
   ContentWrapper,
@@ -65,7 +62,14 @@ const ImageOptionElement = (props: PlateRenderElementProps) => {
   };
 
   return (
-    <ImageWrapper contentEditable={false} focused={focused && selected}>
+    <ImageWrapper
+      {...props.attributes}
+      contentEditable={false}
+      focused={focused && selected}
+      className={`image-option-element ${
+        selected && focused ? "selected" : ""
+      }`}
+    >
       {props.children}
       <ContentWrapper>
         <LeftContentWrapper>
